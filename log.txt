@@ -1,0 +1,148 @@
+2016-05-25T10:55:37.569952:we try to save in static/uploads/eqzbevinhuiafrjgwvee.png
+2016-05-25T10:55:37.586877:static/uploads/eqzbevinhuiafrjgwvee.png Uploaded
+2016-05-25T10:57:32.033370:we start /
+2016-05-25T11:13:52.289539:we start /
+2016-05-25T11:14:02.404970:we try to save in static/uploads//wpmvclkdwvjdfykcirwk.png
+2016-05-25T11:14:02.406062:static/uploads//wpmvclkdwvjdfykcirwk.png Uploaded
+2016-05-25T11:14:11.336570:we start /
+2016-05-25T11:19:34.783467:we start /
+2016-05-25T11:19:43.532817:we start /
+2016-05-25T11:20:55.985711:we start /
+2016-05-25T11:22:21.849165:we start /
+2016-05-25T11:22:59.197067:we try to save in static/uploads//qxbsxktoslfgqxayznlx.png
+2016-05-25T11:22:59.197980:static/uploads//qxbsxktoslfgqxayznlx.png Uploaded
+2016-05-25T11:23:21.694446:we try to save in static/uploads//kzyugvdjffgwbpzuimzp.png
+2016-05-25T11:23:21.695697:static/uploads//kzyugvdjffgwbpzuimzp.png Uploaded
+2016-05-25T11:24:16.122220:we start /
+2016-05-25T11:24:57.039580:we try to save in static/uploads//ytbbccfrgznwlauvlgyc.png
+2016-05-25T11:24:57.041154:static/uploads//ytbbccfrgznwlauvlgyc.png Uploaded
+2016-05-25T11:31:15.312861:we try to save in static/uploads//hzpmmeofyupjlgscxszn.png
+2016-05-25T11:31:15.315049:static/uploads//hzpmmeofyupjlgscxszn.png Uploaded
+2016-05-25T11:31:36.591992:we try to save in static/uploads//gootcsvarhtnnprmlczy.png
+2016-05-25T11:31:36.594038:static/uploads//gootcsvarhtnnprmlczy.png Uploaded
+2016-05-25T11:49:14.473588:we start /
+2016-05-25T11:50:27.821556:we try to save in static/uploads//ysbnlkikifxtvnqyfuub.png
+2016-05-25T11:50:27.824581:static/uploads//ysbnlkikifxtvnqyfuub.png Uploaded
+2016-05-25T11:50:29.307038:we start /
+2016-05-25T11:51:11.888827:we try to save in static/uploads//ufzarzkirqkonbdwxxki.png
+2016-05-25T11:51:11.890451:static/uploads//ufzarzkirqkonbdwxxki.png Uploaded
+2016-05-25T12:05:03.158026:we try to save in static/uploads//dexbdvwxuyicsabamxse.png
+2016-05-25T12:05:03.205906:static/uploads//dexbdvwxuyicsabamxse.png Uploaded
+2016-05-25T12:05:57.152973:we start /
+2016-05-25T12:06:28.991485:we start /
+2016-05-29T16:05:42.613705:we start /
+2016-05-29T16:06:14.114354:we start /
+2016-06-10T09:41:02.662562:we start /
+2016-06-10T09:41:32.948975:we are in  /home/pydev/PycharmProjects/fmedia/private
+2016-06-10T09:41:32.949153:search for files in static/uploads/
+2016-06-10T09:42:26.582894:we start /
+2016-06-10T10:20:50.008494:we start /
+2016-06-10T10:23:33.409019:we start /
+2016-06-10T10:28:53.236960:we start /
+2016-06-10T10:41:02.761300:we start /
+2016-06-10T10:41:45.643207:we start /
+2016-06-10T11:22:09.022464:we start /
+2016-06-10T11:29:51.466340:we start /
+2016-06-10T11:30:06.289429:we start /
+2016-06-10T11:50:24.368248:we start /
+2016-06-10T11:57:09.940768:we start /
+2016-06-10T11:59:37.282964:we start /
+2016-06-10T12:00:27.029889:we start /
+2016-06-10T12:01:38.924714:we start /
+2016-06-10T12:05:02.447487:we start /
+2016-06-10T12:17:27.003133:we start /
+2016-06-10T12:18:42.871299:we start /
+2016-06-10T12:20:02.487637:we start /
+2016-06-10T12:28:16.900544:we start /
+2016-06-10T12:30:19.201465:we start /
+2016-06-10T12:30:47.412787:we start /
+2016-06-10T12:31:31.211075:we start /
+2016-06-10T12:32:33.078126:we start /
+2016-06-10T12:33:12.005607:we start /
+2016-06-10T12:36:40.298235:we start /
+2016-06-10T12:37:22.717855:we start /
+2016-06-10T12:39:40.138422:we start /
+2016-06-10T12:43:03.556321:we start /
+2016-06-10T12:45:23.166218:we start /
+2016-06-10T12:55:17.999712:we start /
+2016-06-10T13:01:01.150658:we start /
+2016-06-10T13:03:20.768601:we start /
+2016-06-10T13:03:33.329335:we start /
+2016-06-10T13:05:23.838994:we start /
+2016-06-10T13:06:35.889206:we start /
+2016-06-10T13:08:23.184886:we start /
+2016-06-10T13:12:08.189328:we start /
+2016-06-10T13:13:16.194483:we start /
+2016-06-10T13:17:40.408565:we start /
+2016-06-10T13:20:04.674900:we start /
+2016-06-10T13:37:41.245503:we start /
+2016-06-10T13:40:21.439026:we start /
+2016-06-10T13:44:18.535829:we start /
+2016-06-10T13:44:39.470963:we start /
+2016-06-10T13:45:51.764491:we start /
+2016-06-10T13:45:57.531855:we start /
+2016-06-10T13:47:02.339606:we start /
+2016-06-10T13:50:21.614205:we start /
+2016-06-10T13:52:38.628040:we start /
+2016-06-10T14:07:38.880710:we start /
+2016-06-10T14:08:16.818037:we start /
+2016-06-10T14:09:38.354229:we start /
+2016-06-10T14:13:18.525676:we start /
+2016-06-10T17:13:46.220575:we start /
+2016-06-10T17:14:11.549672:we start /
+2016-06-10T17:15:29.807176:we start /
+2016-06-10T17:17:00.362900:we start /
+2016-06-10T17:17:10.492429:we start /
+2016-06-11T08:22:49.260015:we start /
+2016-06-11T08:23:43.477474:we start /
+2016-06-11T08:23:47.399700:we start /
+2016-06-11T08:37:45.214447:we start /
+2016-06-11T08:40:13.538360:we start /
+2016-06-11T08:48:38.450677:we start /
+2016-06-11T09:02:57.539433:we start /
+2016-06-11T09:03:32.069897:we start /
+2016-06-11T09:04:35.951459:we start /
+2016-06-11T09:06:25.147684:we start /
+2016-06-11T09:08:47.053462:we start /
+2016-06-11T10:32:41.807078:we start /
+2016-06-11T10:34:09.510791:we start /
+2016-06-11T10:34:28.691511:we start /
+2016-06-11T10:35:40.147494:we start /
+2016-06-11T10:35:48.544549:we start /
+2016-06-11T10:37:13.499739:we start /
+2016-06-11T10:39:07.465096:we start /
+2016-06-11T10:39:11.072137:we start /
+2016-06-11T10:39:27.312592:we start /
+2016-06-11T10:42:30.114142:we start /
+2016-06-11T10:42:36.330209:we start /
+2016-06-11T10:44:21.380083:we start /
+2016-06-11T10:44:50.024521:we start /
+2016-06-11T14:23:18.049013:we start /
+2016-06-11T14:24:56.290484:we start /
+2016-06-11T15:42:31.568591:we start /
+2016-06-11T15:46:45.825750:we start /
+2016-06-11T15:48:53.156836:we start /
+2016-06-11T15:51:59.639666:we start /
+2016-06-11T15:53:05.361415:we start /
+2016-06-11T15:54:00.163547:we start /
+2016-06-11T15:54:05.549151:we start /
+2016-06-11T15:54:26.586313:we start /
+2016-06-11T15:56:31.215290:we start /
+2016-06-11T16:02:18.312339:we try to save in static/uploads//dctuuqajgnltshczacrw.png
+2016-06-11T16:15:50.542650:we start /
+2016-06-12T15:48:11.375267:we start /
+2016-06-12T15:48:38.128420:we start /
+2016-06-12T16:12:22.373247:we start /
+2016-06-18T17:44:07.653790:we start /
+2016-06-18T17:44:30.478545:we picture /
+2016-06-18T17:47:30.695289:we picture /
+2016-06-18T18:10:25.404995:we picture /
+2016-06-18T18:10:25.427655:we look forstatic/pics/LO022EWIOK60_1_v2.png
+2016-06-18T18:10:43.274823:we picture /
+2016-06-18T18:10:43.275010:we look forstatic/pics/LO022EWIOK60_2_v2.png
+2016-06-18T18:42:03.079071:we picture /
+2016-06-18T18:42:03.095849:we look forstatic/pics/DO005EWHVV79_1_v1.png
+2016-06-18T18:43:30.112705:we picture /
+2016-06-18T18:43:30.112940:we look forstatic/pics/DO005EWHVV79_1_v1.png
+2016-06-18T18:45:22.881984:we picture /
+2016-06-18T18:45:22.882181:we look forstatic/pics/DO005EWHVV79_1_v1.png

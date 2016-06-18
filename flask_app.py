@@ -1,0 +1,77 @@
+from flask import Flask, render_template, send_file, \
+    abort, request, redirect, url_for, send_from_directory
+import base64
+import random, string, os, datetime
+import transer
+
+app = Flask(__name__)
+local_mode = os.getenv('USER') == 'pydev'
+app.config['UPLOAD_FOLDER'] = \
+    '/home/shopeiro/fmedia/static/uploads'  # default for pythonanywhere
+if local_mode:
+    print('start in local mode')
+    app.config['UPLOAD_FOLDER'] = 'static/uploads/'
+
+
+def randomword(length):
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+
+
+def log(msg):
+    f = open("log.txt", "a")
+    f.write(str(datetime.datetime.now().isoformat()) + ":" + msg + "\n")
+    f.close()
+
+
+@app.route('/')
+def hello_world():
+    log('we start /')
+    # return "hello"
+    return render_template('index.template.html')
+
+
+@app.route('/pics/<string:jpgfile>', methods=['GET'])
+def pic(jpgfile):
+    log('we picture /')
+    pngfile = jpgfile[:-3]+'png'
+    pathto='static/pics/'
+    log('we look for'+ pathto+ pngfile)
+    if os.path.exists(pathto + pngfile):
+        try:
+            return send_file(pathto + pngfile)
+        except:
+            abort(404)
+    transer.save_transp(jpgfile)
+    return send_file(pathto + pngfile)
+
+
+@app.route('/looks')
+def looks():
+    log('we are in  ' + os.getcwd())
+    log('search for files in ' + app.config['UPLOAD_FOLDER'])
+    return render_template("looks.template.html", files=os.listdir(app.config['UPLOAD_FOLDER']))
+
+
+@app.route('/upload', methods=['GET'])
+def upload_start():
+    print("upload page")
+    return render_template("upload.template.html")
+
+
+# Route that will process the file upload
+@app.route('/upload', methods=['POST'])
+def upload():
+    img = request.form['img'][22:]
+    fname = app.config['UPLOAD_FOLDER'] + "/" + randomword(20) + '.png'
+    log('we try to save in ' + fname)
+    f = open(fname, 'wb')
+    f.write(base64.b64decode(img))
+    f.close()
+    log(fname + " Uploaded")
+
+
+# make comment for pythonanywhere
+if local_mode and __name__ == "__main__":
+    port = int(os.getenv('PORT', 8080))
+    host = os.getenv('IP', '0.0.0.0')
+    app.run(port=port, host=host, debug=True)
