@@ -1,5 +1,5 @@
 from lxml import etree
-
+from checker import img_exists
 
 def key2value_str(key, value):
     return "'" + key + "':'" + str(value) + "'"
@@ -24,13 +24,13 @@ def node2json(node):
             rez = rez + "]"
         if subnode.tag == 'market_category' or subnode.tag == 'typePrefix' or subnode.tag == 'description':
             rez = rez + ',' + key2value_str(subnode.tag, subnode.text)
-        elif subnode.tag == 'picture':
+        elif subnode.tag == 'picture' and img_exists(subnode.text):
             # fp.write(lamoda_pathandfile(subnode.text) + "\n")
             if pictures_mode:
-                rez = rez + ",'" + subnode.text + "'"
+                rez = rez + ",'" + subnode.text[31:] + "'"
             else:
                 pictures_mode = True
-                rez = rez + ",'pictures':['" + subnode.text + "'"
+                rez = rez + ",'pictures':['" + subnode.text[31:] + "'"
         elif subnode.tag == "param" and len(subnode.keys()) != 2:
             rez = rez + "," + key2value_str(subnode.values()[0].lower(), subnode.text)
 
@@ -60,10 +60,10 @@ jsons = {}
 issues_count=0
 print(len(nodes))
 fb = open("minibase12.js", "w")
-# fp = open("pictures.txt", "w")
+fp = open("pictures.txt", "w")
 fb.write("objects=[\n")
 for i in range(len(nodes)):  # Перебираем элементы
-    print(node2json(nodes[i]))
+    # print(node2json(nodes[i]))
     current = nodes[i].get('id')[:14]
     current_price = issue_price(nodes[i])
     current_size = issue_size(nodes[i])
@@ -84,10 +84,10 @@ for i in range(len(nodes)):  # Перебираем элементы
     print(current, issue_price(nodes[i]), issue_size(nodes[i]), jsons[current])  # nodes[i].get('id'),
     print (i)
 
-print(len(folded_nodes))
-print(folded_nodes)
-print(prices)
-print(sizes)
+# print(len(folded_nodes))
+# print(folded_nodes)
+# print(prices)
+# print(sizes)
 
 for current in folded_nodes.keys():
     json = jsons[current] + ",'price':'" + str(prices[current]) + "','sizes':[" + sizes[current] + "]}"
@@ -97,6 +97,6 @@ for current in folded_nodes.keys():
     else:
         fb.write(json + "\n")
 
-fb.write("];")
+fb.write("]")
 fb.close()
-# fp.close()
+fp.close()
