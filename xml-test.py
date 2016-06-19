@@ -25,7 +25,7 @@ def node2json(node):
         if subnode.tag == 'market_category' or subnode.tag == 'typePrefix' or subnode.tag == 'description':
             rez = rez + ',' + key2value_str(subnode.tag, subnode.text)
         elif subnode.tag == 'picture':
-            fp.write(lamoda_pathandfile(subnode.text) + "\n")
+            # fp.write(lamoda_pathandfile(subnode.text) + "\n")
             if pictures_mode:
                 rez = rez + ",'" + subnode.text + "'"
             else:
@@ -59,13 +59,11 @@ sizes = {}
 jsons = {}
 issues_count=0
 print(len(nodes))
-# fb = open("../server/minibase200.js", "w")
+fb = open("minibase12.js", "w")
 # fp = open("pictures.txt", "w")
-# fb.write("objects=[\n")
+fb.write("objects=[\n")
 for i in range(len(nodes)):  # Перебираем элементы
-    # fb.write(node2json(nodes[i]))
-    # fb.write(",\n")
-    # print(node2json(nodes[i]))
+    print(node2json(nodes[i]))
     current = nodes[i].get('id')[:14]
     current_price = issue_price(nodes[i])
     current_size = issue_size(nodes[i])
@@ -76,29 +74,29 @@ for i in range(len(nodes)):  # Перебираем элементы
         folded_nodes[current] = 1
         prices[current] = current_price
         sizes[current] = current_size
-        # jsons[current] = node2json(nodes[i])
+        jsons[current] = node2json(nodes[i])
     else:
         folded_nodes[current] += 1
         if current_price > prices[current]:
             print(current)
             prices[current] = current_price
         sizes[current] = sizes[current] + "," + current_size
-    # print(current, issue_price(nodes[i]), issue_size(nodes[i]), jsons[current])  # nodes[i].get('id'),
+    print(current, issue_price(nodes[i]), issue_size(nodes[i]), jsons[current])  # nodes[i].get('id'),
+    print (i)
 
-    # folded_nodes[i]=folded_nodes[i]+1
-# print(len(folded_nodes))
-# print(folded_nodes)
-# print(prices)
-# print(sizes)
-#
-# for current in folded_nodes.keys():
-#     json = jsons[current] + ",'price':'" + str(prices[current]) + "','sizes':[" + sizes[current] + "]}"
-#     print(json)
-#     if current != list(folded_nodes.keys())[-1]:
-#         fb.write(json + ",\n")
-#     else:
-#         fb.write(json + "\n")
-#
-# fb.write("];")
-# fb.close()
+print(len(folded_nodes))
+print(folded_nodes)
+print(prices)
+print(sizes)
+
+for current in folded_nodes.keys():
+    json = jsons[current] + ",'price':'" + str(prices[current]) + "','sizes':[" + sizes[current] + "]}"
+    print(json)
+    if current != list(folded_nodes.keys())[-1]:
+        fb.write(json + ",\n")
+    else:
+        fb.write(json + "\n")
+
+fb.write("];")
+fb.close()
 # fp.close()
