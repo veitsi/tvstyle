@@ -1,22 +1,19 @@
 import pymongo
 from minibase7 import objects
-print(objects[0]['price'])
-
 conn = pymongo.MongoClient('mongodb://ds015194.mlab.com',15194)
 # выбираем базу данных
 db = conn.shopeiro
-db.authenticate('shopeiro','shopeiro')
+db.authenticate('stylist','stylist')
 # # БД можно выбрать и так db = conn['mydb']
 # # выбираем коллекцию документов
 coll = db.tools
-
-coll.remove()
 for issue in objects:
-    coll.save(issue)
+    print(issue)
 
 
-for issue in coll.find():
-    print (issue)
+#coll.remove()
+# for issue in coll.find():
+#     print (issue)
 # # альтернативный выбор коллекции документов coll = db['mycoll']
 #
 # # осуществляем добавление документа в коллекцию,

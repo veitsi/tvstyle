@@ -1,5 +1,9 @@
-from urllib.request import urlopen
-
+# from os import environ
+# # if environ['USER'] == 'pydev':
+#     from urllib.request import urlopen #for localhost
+# else:
+#     from urllib import urlopen  # on c9.io for python 2
+from urllib.request import urlopen #works for python3
 
 def img_exists(img='http://ya.ru/somewwwwwwwwwwww.jpg'):
     try:
@@ -7,6 +11,7 @@ def img_exists(img='http://ya.ru/somewwwwwwwwwwww.jpg'):
         return True
     except:
         return False
+
 
 if __name__ == '__main__':
     print(img_exists('http://ya.ru'))

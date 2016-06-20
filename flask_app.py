@@ -32,17 +32,17 @@ def hello_world():
 
 @app.route('/pics/<string:jpgfile>', methods=['GET'])
 def pic(jpgfile):
-    log('we picture /')
-    pngfile = jpgfile[:-3]+'png'
-    pathto='static/pics/'
-    log('we look for'+ pathto+ pngfile)
-    if os.path.exists(pathto + pngfile):
+    pathtopng = 'pics/'
+    pngfile = pathtopng + jpgfile[:-3] + 'png'
+    log('we look for' + jpgfile)
+    # abort(404)
+    if os.path.exists(pngfile):
         try:
-            return send_file(pathto + pngfile)
+            return send_file(pngfile)
         except:
             abort(404)
-    transer.save_transp(jpgfile)
-    return send_file(pathto + pngfile)
+    transer.save_transp(jpgfile, pngfile)
+    return send_file(pngfile)
 
 
 @app.route('/looks')
