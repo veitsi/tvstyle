@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template, send_file, \
     abort, request, redirect, url_for, send_from_directory
 import base64
@@ -71,7 +73,7 @@ def upload():
 
 
 # make comment for pythonanywhere
-if local_mode and __name__ == "__main__":
+if __name__ == "__main__":
     port = int(os.getenv('PORT', 8080))
     host = os.getenv('IP', '0.0.0.0')
     app.run(port=port, host=host, debug=True)
