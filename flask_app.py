@@ -27,7 +27,7 @@ def log(msg):
 def hello_world():
     log('we start /')
     # return "hello"
-    return render_template('index.template.html')
+    return render_template('index.html')
 
 
 @app.route('/pics/<string:jpgfile>', methods=['GET'])
@@ -49,13 +49,13 @@ def pic(jpgfile):
 def looks():
     log('we are in  ' + os.getcwd())
     log('search for files in ' + app.config['UPLOAD_FOLDER'])
-    return render_template("looks.template.html", files=os.listdir(app.config['UPLOAD_FOLDER']))
+    return render_template("looks.html", files=os.listdir(app.config['UPLOAD_FOLDER']))
 
 
 @app.route('/upload', methods=['GET'])
 def upload_start():
     print("upload page")
-    return render_template("upload.template.html")
+    return render_template("upload.html")
 
 
 # Route that will process the file upload

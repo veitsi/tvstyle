@@ -1,3 +1,6 @@
+api  for stylist
+https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf
+<only 12 records>
 https://api.mlab.com/api/1/databases/shopeiro/collections/tools?apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf
 [ { "_id" : "1111" , "name" : "John"} ]
 https://api.mlab.com/api/1/databases/shopeiro/collections/tools?c=true&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf
