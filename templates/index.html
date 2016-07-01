@@ -41,6 +41,7 @@
         width: 400px;
         height: 400px;
     }
+
     .cell {
         position: absolute;
         width: 200px;
@@ -90,11 +91,18 @@
             tools = data;
             for (let i = 0; i < tools.length; i++) {
                 tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
-                console.log(tools[i].pictures[0])
+                //console.log(tools[i].pictures[0])
             }
             updateToolsFilter();
         }
     });
+
+    function droppedIn(event, ui){
+        console.log('you try to drop '+ui.draggable.attr('id'));
+    }
+    $('#c11').droppable({drop:droppedIn});
+    $('#c22').droppable({drop: droppedIn});
+
 
     function addIssue(e) {
         console.log('in addIssue handler');
@@ -111,14 +119,16 @@
         return rez;
     }
 
+
     function updateToolsFilter() {
         console.log('in tools update');
         $('#tools').empty();
         for (let i = 0; i < tools.length; i++) {
-            console.log(toolsItem(tools[i]._id, 'pics/OO001EWIWW29_1_v2.png', tools[i].description));
+            //console.log(toolsItem(tools[i]._id, 'pics/OO001EWIWW29_1_v2.png', tools[i].description));
             $('#tools').append(
                     toolsItem(tools[i]._id, "pics/" + tools[i].pictures[0], tools[i].description));
-            $('#' + tools[i]._id).one("click", addIssue)
+            //$('#' + tools[i]._id).one("click", addIssue);//adding by click
+            $('#' + tools[i]._id).draggable();//adding by drop
         }
     }
 
@@ -156,7 +166,7 @@
         }
     }
     $('#top01').one("click", addIssue);
-    $('#canvas').resizable();
+    //    $('#canvas').resizable();
     //    $('#top02').draggable();
     //http://stackoverflow.com/questions/13198131/how-to-save-a-html5-canvas-as-image-on-a-server
     $('#screen').click(function () {
