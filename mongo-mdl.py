@@ -7,8 +7,10 @@ db.authenticate('stylist','stylist')
 # # БД можно выбрать и так db = conn['mydb']
 # # выбираем коллекцию документов
 coll = db.tools
-for issue in objects:
-    print(issue)
+print(db.tools.distinct('typePrefix'))
+
+# for issue in objects:
+#     print(issue)
 
 
 #coll.remove()
