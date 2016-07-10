@@ -18,6 +18,11 @@
         /*background-color: white;*/
         /*border: 1px black solid;*/
     }
+    .look-item {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+    }
 
     li {
         height: 38px;
@@ -46,17 +51,22 @@
         position: absolute;
         width: 200px;
         height: 200px;
-        background-color: pink;
+        border: black solid 1px;
     }
 </style>
 
-<!--TODO add by drag&drop-->
-<!--TODO add different cells on canvas to add issues-->
+<!--TODO done add by drag&drop-->
+<!--TODO done add different cells on canvas to add issues-->
+<!--TODO add helper to not disturb original item-->
+<!--TODO узкие шмотки типа туфлей и поясов можно подымыть повыше в минуса-->
+
 <div class="container">
     <div class="row">
         <div id="canvas-container" class="col-sm-7" style="height: 100vh; background-color: white">
             <div id="canvas">
                 <div id="c11" style="top: 0; left: 0" class="cell"></div>
+                <div id="c12" style="top: 0; left: 200px" class="cell"></div>
+                <div id="c21" style="top: 200px; left: 0" class="cell"></div>
                 <div id="c22" style="top: 200px; left: 200px" class="cell"></div>
             </div>
         </div>
@@ -96,11 +106,25 @@
             updateToolsFilter();
         }
     });
+        function canvasItem(id, src, alt) {
+        rez = '<img id="' + id + '"class="tools-item" src="' +
+                src + '" title="' + alt + '">';
+        return rez;
+    }
 
     function droppedIn(event, ui){
-        console.log('you try to drop '+ui.draggable.attr('id'));
+        console.log('in droppedIn '+ui.draggable.attr('id')+
+        ui.draggable.attr('src') + ui.draggable.attr('title'));
+        var cellSize=200;
+        //$(this).append("<p>ppp<p>");
+        $(this).append(
+          '<img id="' + ui.draggable.attr('id') + '"class="look-item" src="' +
+                ui.draggable.attr('src') + '" title="' +  ui.draggable.attr('title')+'">'
+        );
     }
+
     $('#c11').droppable({drop:droppedIn});
+    $('#c12').droppable({drop:droppedIn});
     $('#c22').droppable({drop: droppedIn});
 
 
@@ -128,10 +152,9 @@
             $('#tools').append(
                     toolsItem(tools[i]._id, "pics/" + tools[i].pictures[0], tools[i].description));
             //$('#' + tools[i]._id).one("click", addIssue);//adding by click
-            $('#' + tools[i]._id).draggable();//adding by drop
+            $('#' + tools[i]._id).draggable({helper:'clone'});//adding by drop
         }
     }
-
 
     function maxpriceChanged() {
         console.log('max price changed to ' + $('#maxprice').val());
