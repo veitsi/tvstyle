@@ -84,83 +84,19 @@
             </ul>
 
             <div id="tabs-woman">
-                <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec
-                    sollicitudin mi
-                    sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus
-                    lacus
-                    auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis
-                    orci.
-                    Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede
-                    varius
-                    sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus
-                    lectus.</p>
+
             </div>
             <div id="tabs-man">
-                <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id
-                    nunc.
-                    Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie
-                    lectus, ut
-                    tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit
-                    aliquam.
-                    Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat
-                    nunc.
-                    Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas
-                    feugiat,
-                    tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris
-                    consectetur tortor et purus.</p>
+
             </div>
             <div id="tabs-home">
-                <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel
-                    vehicula
-                    accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent
-                    taciti
-                    sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu
-                    urna vel
-                    enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim,
-                    pretium
-                    nec, feugiat nec, luctus a, lacus.</p>
+
             </div>
             <div id="tabs-shoes">
-                <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id
-                    nunc.
-                    Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie
-                    lectus, ut
-                    tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit
-                    aliquam.
-                    Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat
-                    nunc.
-                    Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas
-                    feugiat,
-                    tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris
-                    consectetur tortor et purus.</p>
             </div>
             <div id="tabs-jeans">
-                <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id
-                    nunc.
-                    Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie
-                    lectus, ut
-                    tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit
-                    aliquam.
-                    Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat
-                    nunc.
-                    Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas
-                    feugiat,
-                    tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris
-                    consectetur tortor et purus.</p>
             </div>
             <div id="tabs-outwear">
-                <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id
-                    nunc.
-                    Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie
-                    lectus, ut
-                    tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit
-                    aliquam.
-                    Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat
-                    nunc.
-                    Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas
-                    feugiat,
-                    tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris
-                    consectetur tortor et purus.</p>
             </div>
             <!--menu was here and moved to bottom-->
             <!--<form>-->
@@ -184,9 +120,29 @@
 <script>
 
     $("#right-side").tabs();
+    $("#right-side").tabs( "option", "active", 4 );
     var tools_filter = {};
-    const tools_max = 12;
+    const tools_max = 5;
     tools = {};
+
+    function toolsItem(id, src, alt) {
+        rez = '<img id="' + id + '"class="tools-item" src="' +
+                src + '" title="' + alt + '">';
+        return rez;
+    }
+
+    function updateToolsFilter() {
+        console.log('in tools update');
+        $('#tools').empty();
+        for (let i = 0; i < tools.length; i++) {
+            //console.log(toolsItem(tools[i]._id, 'pics/OO001EWIWW29_1_v2.png', tools[i].description));
+            $('#tools').append(
+                    toolsItem(tools[i]._id, "pics/" + tools[i].pictures[0], tools[i].description));
+            //$('#' + tools[i]._id).one("click", addIssue);//adding by click
+            $('#' + tools[i]._id).draggable({helper: 'clone'});//adding by drop
+        }
+    }
+
 
     $.ajax({
         url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',
@@ -200,6 +156,8 @@
             updateToolsFilter();
         }
     });
+
+
     function canvasItem(id, src, alt) {
         rez = '<img id="' + id + '"class="tools-item" src="' +
                 src + '" title="' + alt + '">';
@@ -229,25 +187,6 @@
         newitem.draggable();
         newitem.dblclick(dragOrResize);
         //$(this).clone().draggable().appendTo($('#canvas'));
-    }
-
-    function toolsItem(id, src, alt) {
-        rez = '<img id="' + id + '"class="tools-item" src="' +
-                src + '" title="' + alt + '">';
-        return rez;
-    }
-
-
-    function updateToolsFilter() {
-        console.log('in tools update');
-        $('#tools').empty();
-        for (let i = 0; i < tools.length; i++) {
-            //console.log(toolsItem(tools[i]._id, 'pics/OO001EWIWW29_1_v2.png', tools[i].description));
-            $('#tools').append(
-                    toolsItem(tools[i]._id, "pics/" + tools[i].pictures[0], tools[i].description));
-            //$('#' + tools[i]._id).one("click", addIssue);//adding by click
-            $('#' + tools[i]._id).draggable({helper: 'clone'});//adding by drop
-        }
     }
 
     function maxpriceChanged() {

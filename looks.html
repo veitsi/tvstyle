@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rendering to looks</title>
+</head>
+<body>
+
+<script src="static/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="static/bower_components/handlebars/handlebars.js"></script>
+<script id="book" type="text/x-handlebars-template">
+    <div>Title: {{title}}</div>
+</script>
+<script>
+    var book = {title: '2001: A Space Odyssey'};
+    // Получаем шаблон
+    var templateScript = $('#book').html();
+    // Функция Handlebars.compile принимает шаблон и возвращает новую функцию
+    var template = Handlebars.compile(templateScript);
+    // Формируем HTML и вставляем в документ
+    $(document.body).append(template(book));
+</script>
+
+
+</body>
+</html>
