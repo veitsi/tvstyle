@@ -5,6 +5,13 @@
     <title>rendering to looks. ready for web</title>
 </head>
 <body>
+<div id="switcher">
+    <select size="1" name="template">
+        <option disabled>Выберите шаблон</option>
+        <option value="c22">c22</option>
+        <option selected value="c3">c3</option>
+    </select>
+</div>
 <div id="canvas" style="position: relative; width: 200px; height: 200px;
     border: black 1px solid">
 </div>
@@ -24,21 +31,39 @@
         <img id="2" src="" width=100 height=100>
     </div>
 </script>
+<script id="c3" type="text/x-handlebars-template">
+    <div style="position:absolute; top:0; left: 0;
+    border: black 1px solid">
+        <img id="0" src="" width=50 height=80>
+    </div>
+    <div style="position:absolute; top:50px; left: 45px;
+    border: black 1px solid">
+        <img id="1" src="" width=80 height=80>
+    </div>
+    <div style="position: absolute;
+    top: 130px; left: 130px; border: black 1px solid">
+        <img id="2" src="" width=100 height=100>
+    </div>
+</script>
 <script>
-//    var img = {src: 'tmp/out01.png'};
-//
-//    // Получаем шаблон
-//    var templateScript = $('#c22').html();
-//    // Функция Handlebars.compile принимает шаблон и возвращает новую функцию
-//    var template = Handlebars.compile(templateScript);
-    // Формируем HTML и вставляем в документ
-    var links= ['tmp/out01.png','tmp/OO001EWIWW29_1_v2.jpg','tmp/OO001EWIWW29_8_v1.jpg'];
-    $('#canvas').append($('#c22').html());//document.body
-    var i=0;
-    for(i;i<links.length;i++){
-        console.log("#"+i);
-        $("#"+i).attr('src',links[i])
+    var links = ['tmp/out01.png', 'tmp/OO001EWIWW29_1_v2.jpg', 'tmp/OO001EWIWW29_8_v1.jpg'];
+    render_template("c22");
+    function render_template(template){
+        console.log('processing '+template);
+        $("#canvas").empty();
+        $('#canvas').append($('#'+template).html());
+        var i = 0;
+        for (i; i < links.length; i++) {
+            console.log("#" + i);
+            $("#" + i).attr('src', links[i])
+        }
     }
+    $('#switcher').change(function () {
+        console.log('selected '+$("#switcher :selected").val());
+        render_template($("#switcher :selected").val());
+    });
+
+
 </script>
 </body>
 </html>
