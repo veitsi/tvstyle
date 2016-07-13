@@ -2,68 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>rendering to looks. ready for web</title>
+    <title>rendering to looks. is it ready for web?</title>
 </head>
 <body>
 <div id="switcher">
     <select size="1" name="template">
         <option disabled>Выберите шаблон</option>
-        <option value="c22">c22</option>
-        <option selected value="c3">c3</option>
+        <option selected value="c22">c22</option>
+        <option value="c3">c3</option>
     </select>
 </div>
 <div id="canvas" style="position: relative; width: 200px; height: 200px;
     border: black 1px solid">
 </div>
+
 <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="static/bower_components/handlebars/handlebars.js"></script>
-<script id="c22" type="text/x-handlebars-template">
-    <div style="position:absolute; top:0; left: 0;
-    border: black 1px solid">
-        <img id="0" src="" width=50 height=80>
-    </div>
-    <div style="position:absolute; top:10px; left: 95px;
-    border: black 1px solid">
-        <img id="1" src="" width=80 height=80>
-    </div>
-    <div style="position: absolute;
-    top: 100px; left: 100px; border: black 1px solid">
-        <img id="2" src="" width=100 height=100>
-    </div>
-</script>
-<script id="c3" type="text/x-handlebars-template">
-    <div style="position:absolute; top:0; left: 0;
-    border: black 1px solid">
-        <img id="0" src="" width=50 height=80>
-    </div>
-    <div style="position:absolute; top:50px; left: 45px;
-    border: black 1px solid">
-        <img id="1" src="" width=80 height=80>
-    </div>
-    <div style="position: absolute;
-    top: 130px; left: 130px; border: black 1px solid">
-        <img id="2" src="" width=100 height=100>
-    </div>
-</script>
+<script src="templates.js"></script>
+
 <script>
-    var links = ['tmp/out01.png', 'tmp/OO001EWIWW29_1_v2.jpg', 'tmp/OO001EWIWW29_8_v1.jpg'];
-    render_template("c22");
-    function render_template(template){
-        console.log('processing '+template);
-        $("#canvas").empty();
-        $('#canvas').append($('#'+template).html());
-        var i = 0;
-        for (i; i < links.length; i++) {
-            console.log("#" + i);
-            $("#" + i).attr('src', links[i])
-        }
-    }
+    render_template("c22",['tmp/out01.png', 'tmp/OO001EWIWW29_1_v2.jpg', 'tmp/OO001EWIWW29_8_v1.jpg']);
     $('#switcher').change(function () {
-        console.log('selected '+$("#switcher :selected").val());
+        console.log('selected ' + $("#switcher :selected").val());
         render_template($("#switcher :selected").val());
     });
-
 
 </script>
 </body>
 </html>
+
+<!--<div style="height: 183px;" _uid="79" class="fill" id="canvas" trackcontext="canvas"><div style="display: none; visibility: hidden;" class="handles handles_border hidden invisible"><div style="cursor: n-resize;" _uid="40" class="handle n resize"></div><div style="cursor: s-resize;" _uid="47" class="handle s resize"></div><div style="cursor: nw-resize;" _uid="49" class="handle nw resize"></div><div style="cursor: ne-resize;" _uid="51" class="handle ne resize"></div><div style="cursor: se-resize;" _uid="53" class="handle se resize"></div><div style="cursor: sw-resize;" _uid="55" class="handle sw resize"></div><div style="cursor: w-resize;" _uid="57" class="handle w resize"></div><div style="cursor: e-resize;" _uid="59" class="handle e resize"></div><div style="cursor: url(&quot;http://akwww.polyvorecdn.com/rsrc/img/rotate_arrow.cur&quot;) 13 4, crosshair;" _uid="61" class="handle n rotate"><div class="rotatetip"></div></div><div _uid="66" class="filling"></div></div><div class="emptymsg"><div><div class="heading">Create a collage</div><div class="subheading">Start by dragging items here.</div></div></div><input id="fakeInput"><div class="multiselect"></div><div _uid="130" class="statusbar"><div class="info" id="statustext">You are filling a template. You can only add items in the designated placeholders.</div></div><div _uid="143" class="NE"><ul unselectable="on" _uid="144" class="toolbar horizontal itemactions unselectable"></ul><div class="clear"></div><div class="controls right" id="bg_btns"></div><div class="iteminfo right"></div></div><div _uid="146" class="NW"><ul unselectable="on" _uid="147" style="display: block; visibility: inherit;" class="toolbar vertical controls canvasactions unselectable"><li style="display: block; visibility: inherit;" class=""><button title="" _uid="148" trackelement="publish_btn" class=" txt " id="publish_btn">Publish</button></li><li style="display: none; visibility: hidden;" class="hidden invisible"><button title="" _uid="154" trackelement="publish_template_btn" class=" txt " id="publish_template_btn">Publish</button></li><li style="display: none; visibility: hidden;" class="hidden invisible"><button title="" _uid="159" trackelement="submit_contest_btn" class=" txt " id="submit_contest_btn">Enter contest</button></li><li style="display: block; visibility: inherit;" class=""><button disabled="true" title="" _uid="165" trackelement="save_btn" class=" txt " id="save_btn">Save Draft</button></li><li><button title="" _uid="171" trackelement="open_btn" class=" txt " id="open_btn">Open</button></li><li style="display: block; visibility: inherit;" class="new_btn"><button title="" _uid="177" trackelement="new_btn" class=" txt " id="new_btn">New</button></li><li class="hr clearfix"></li><li style="display: none; visibility: hidden;" class="undo_btn hidden invisible"><button disabled="true" title="" _uid="183" trackelement="undo_btn" class=" sprited " id="undo_btn"><div class="sprite "></div></button></li><li style="display: none; visibility: hidden;" class="redo_btn hidden invisible"><button disabled="true" title="" _uid="189" trackelement="redo_btn" class=" sprited " id="redo_btn"><div class="sprite "></div></button></li><li class="hr clearfix"></li><li style="display: none; visibility: hidden;" class="hidden invisible"><button title="" _uid="194" trackelement="edit_btn" class=" txt " id="edit_btn">Edit template</button></li><li style="display: none; visibility: hidden;" class="zoom_in hidden invisible"><button title="" _uid="199" trackelement="zoom_in" class=" sprited " id="zoom_in"><div class="sprite "></div></button></li><li style="display: none; visibility: hidden;" class="zoom_out hidden invisible"><button title="" _uid="204" trackelement="zoom_out" class=" sprited " id="zoom_out"><div class="sprite "></div></button></li><li style="display: none; visibility: hidden;" class="fit_btn hidden invisible"><button title="" _uid="210" trackelement="fit_btn" class=" sprited " id="fit_btn"><div class="sprite "></div></button></li><li style="display: block; visibility: inherit;" class=""><button disabled="true" title="" _uid="215" trackelement="clearph_btn" class=" txt " id="clearph_btn">Start over</button></li></ul></div><div unselectable="on" _uid="754" class="item selectNode unselectable" style="left: 138.579px; top: 99.452px; z-index: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><img style="width: 361px; height: 362px;" src="https://secure.polyvoreimg.com/cgi/img-thing/mask/1/size/orig/tid/166759187.png" _uid="751" height="362" width="361"></div><div unselectable="on" _uid="766" class="item selectNode unselectable" style="left: 153.679px; top: 71px; z-index: 2; transform: matrix(1, 0, 0, 1, 0, 0);"><img style="width: 164px; height: 31px;" src="http://ak2.polyvoreimg.com/cgi/img-thing/mask_spec/%5B%7B%22y%22%3A%220.000%22%2C%22x%22%3A%220.000%22%7D%2C%7B%22y%22%3A%220.000%22%2C%22x%22%3A%221.000%22%7D%2C%7B%22y%22%3A%220.750%22%2C%22x%22%3A%221.000%22%7D%2C%7B%22y%22%3A%220.750%22%2C%22x%22%3A%220.000%22%7D%5D/size/orig/tid/138441688.png" _uid="763" height="31" width="164"></div><div unselectable="on" _uid="775" class="item selectNode unselectable" style="left: 230.31px; top: 118.048px; z-index: 3; transform: matrix(1, 0, 0, 1, 0, 0);"><img style="width: 253px; height: 334px;" src="http://ak1.polyvoreimg.com/cgi/img-thing/size/orig/tid/42944227.jpg" _uid="772" height="334" width="253"></div><div unselectable="on" _uid="782" class="item selectNode unselectable" style="left: 151px; top: 111px; z-index: 4; transform: matrix(1, 0, 0, 1, 0, 0); width: 182px; height: 259px;"><div style="background-color: rgb(167, 169, 172); width: 100%; height: 100%; opacity: 1;"></div></div><div unselectable="on" _uid="790" class="item selectNode placeholder empty unselectable droppable" style="left: 155.966px; top: 114.472px; z-index: 5; transform: matrix(1, 0, 0, 1, 0, 0); width: 169px; height: 250px;"><div class="bg"></div><div style="font-size: 1.5em; display: block; visibility: inherit;" unselectable="on" _uid="788" class="ph_hint unselectable">Picture</div></div><div unselectable="on" _uid="802" class="item selectNode unselectable" style="left: 149.867px; top: 350.35px; z-index: 6; transform: matrix(1, 0, 0, 1, 0, 0);"><img style="width: 178px; height: 94px;" src="http://ak1.polyvoreimg.com/cgi/img-thing/mask/1/size/orig/tid/99435261.png" _uid="799" height="94" width="178"></div><div unselectable="on" _uid="809" class="item selectNode placeholder empty unselectable droppable" style="left: 329.802px; top: 141.539px; z-index: 7; transform: matrix(1, 0, 0, 1, 0, 0); width: 159px; height: 305px;"><div class="bg"></div><div style="font-size: 1.5em; display: block; visibility: inherit;" unselectable="on" _uid="808" class="ph_hint unselectable">skirt / pant</div></div><div unselectable="on" _uid="817" class="item selectNode placeholder empty unselectable droppable" style="left: 268.045px; top: 123.621px; z-index: 8; transform: matrix(1, 0, 0, 1, 0, 0); width: 176px; height: 230px;"><div class="bg"></div><div style="font-size: 1.5em; display: block; visibility: inherit;" unselectable="on" _uid="816" class="ph_hint unselectable">top / jacket</div></div><div unselectable="on" _uid="825" class="item selectNode placeholder empty unselectable droppable" style="left: 297.017px; top: 192.582px; z-index: 9; transform: matrix(1, 0, 0, 1, 0, 0); width: 144px; height: 200px;"><div class="bg"></div><div style="font-size: 1.5em; display: block; visibility: inherit;" unselectable="on" _uid="824" class="ph_hint unselectable">top/jacket</div></div><div unselectable="on" _uid="833" class="item selectNode placeholder empty unselectable droppable" style="left: 230.685px; top: 334.517px; z-index: 10; transform: matrix(1, 0, 0, 1, 0, 0); width: 123px; height: 115px;"><div class="bg"></div><div style="font-size: 1.45em; display: block; visibility: inherit;" unselectable="on" _uid="832" class="ph_hint unselectable">Purse</div></div><div unselectable="on" _uid="841" class="item selectNode placeholder empty unselectable droppable" style="left: 388.51px; top: 353.057px; z-index: 11; transform: matrix(1, 0, 0, 1, 0, 0); width: 94px; height: 96px;"><div class="bg"></div><div style="font-size: 1.2em; display: block; visibility: inherit;" unselectable="on" _uid="840" class="ph_hint unselectable">shoe</div></div><div unselectable="on" _uid="849" class="item selectNode placeholder empty unselectable droppable" style="left: 354.2px; top: 364.494px; z-index: 12; transform: matrix(1, 0, 0, 1, 0, 0); width: 94px; height: 96px;"><div class="bg"></div><div style="font-size: 1.2em; display: block; visibility: inherit;" unselectable="on" _uid="848" class="ph_hint unselectable">shoe</div></div><div unselectable="on" _uid="857" class="item selectNode placeholder empty unselectable droppable" style="left: 374.024px; top: 110.289px; z-index: 13; transform: matrix(1, 0, 0, 1, 0, 0); width: 91px; height: 87px;"><div class="bg"></div><div style="font-size: 1.12em; display: block; visibility: inherit;" unselectable="on" _uid="856" class="ph_hint unselectable">jewelry</div></div></div>-->
