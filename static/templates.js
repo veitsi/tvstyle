@@ -3,7 +3,7 @@ var templates = {
         items: 3, html: `
 <div style="position:absolute; top:0; left: 0;
     border: black 1px solid">
-    <img id="0" src="" width=50 height=80>
+    <img id="0" src="" width=50 height=80 style="">
 </div>
 <div style="position:absolute; top:10px; left: 95px;
     border: black 1px solid">
@@ -30,6 +30,15 @@ var templates = {
     <img id="2" src="" width=100 height=100>
 </div>
 `
+    },
+    'weekend_gateway': {
+        items: 4, html: `
+      <div class="item placeholder">Bla Bla Bla</div>
+      <div class="item top"><img id="0" src="" width=50 height=80></div>
+      <div class="item bottom"></div>
+      <div class="item shoes"></div>
+      <div class="item bag"></div>
+    `
     }
 };
 

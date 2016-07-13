@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>rendering to looks. is it ready for web?</title>
+    <link href="static/look-template.css" rel="stylesheet">
 </head>
 <body>
 <div id="switcher">
     <select size="1" name="template">
         <option disabled>Выберите шаблон</option>
-        <option selected value="c22">c22</option>
+        <option selected value="weekend_gateway">weekend_gateway</option>
+        <option value="c22">c22</option>
         <option value="c3">c3</option>
     </select>
 </div>
@@ -17,13 +19,14 @@
 </div>
 
 <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="templates.js"></script>
+<script src="static/templates.js"></script>
 
 <script>
-    render_template("c22",['tmp/out01.png', 'tmp/OO001EWIWW29_1_v2.jpg', 'tmp/OO001EWIWW29_8_v1.jpg']);
+    var links=['tmp/out01.png', 'tmp/OO001EWIWW29_1_v2.jpg', 'tmp/OO001EWIWW29_8_v1.jpg'];
+    render_template("weekend_gateway",links);
     $('#switcher').change(function () {
         console.log('selected ' + $("#switcher :selected").val());
-        render_template($("#switcher :selected").val());
+        render_template($("#switcher :selected").val(),links);
     });
 
 </script>
