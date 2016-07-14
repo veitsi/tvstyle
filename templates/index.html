@@ -27,8 +27,11 @@
         height: 200px;
     }
 
-    li {
-        height: 38px;
+    /*li {*/
+    /*height: 38px;*/
+    /*}*/
+    #right-side li a{
+        font-size: 10px;
     }
 
     a {
@@ -84,30 +87,32 @@
 
         </div>
         <div id="right-side" class="col-sm-5" style="height: 100vh;background-color: #eee">
-            <ul>
-                <li><a href="#tabs-woman">Woman</a></li>
-                <li><a href="#tabs-man">Man</a></li>
-                <li><a href="#tabs-home">Home</a></li>
-                <br><br><br>
-                <li><a href="#tabs-shoes">Shoes</a></li>
-                <li><a href="#tabs-jeans">Jeans</a></li>
-                <li><a href="#tabs-outwear">Outwear</a></li>
+            <ul style="font-size: 7px">
+                <!--<li><a href="#tabs-woman">Woman</a></li>-->
+                <!--<li><a href="#tabs-man">Man</a></li>-->
+                <!--<li><a href="#tabs-home">Home</a></li>-->
+                <!--<br><br><br>-->
+                <li><a href="#tab-dresses">Платья</a></li>
+                <li><a href="#tab-shoes">Обувь</a></li>
+                <li><a href="#tab-topblues">Топы&Блузки</a></li>
+                <li><a href="#tab-skirts">Юбки</a></li>
+                <li><a href="#tab-acc">Аксессуары</a></li>
             </ul>
-
-            <div id="tabs-woman">
-
+            <!--<div id="tabs-woman">-->
+            <!--</div>-->
+            <!--<div id="tabs-man">-->
+            <!--</div>-->
+            <!--<div id="tabs-home">-->
+            <!--</div>-->
+            <div id="tab-dresses">tabs-dresses
             </div>
-            <div id="tabs-man">
-
+            <div id="tab-shoes">shoes
             </div>
-            <div id="tabs-home">
-
+            <div id="tab-skirts">skirts
             </div>
-            <div id="tabs-shoes">
+            <div id="tab-acc">acc
             </div>
-            <div id="tabs-jeans">
-            </div>
-            <div id="tabs-outwear">
+            <div id="tab-topblues">topblues
             </div>
 
             <div id="tools" style="border-color: black">
@@ -140,7 +145,7 @@
     });
 
     $("#right-side").tabs();
-    $("#right-side").tabs("option", "active", 4);
+    $("#right-side").tabs("option", "active", 0);
     var tools_filter = {};
     const tools_max = 5;
     tools = {};
@@ -151,19 +156,24 @@
         return rez;
     }
 
-    function updateToolsFilter() {
-        console.log('in tools update');
-        $('#tools').empty();
+    function updateToolsFilter(tab) {
+        tab=tab||'tools';
+        console.log('in tab update');
+        $('#'+tab).empty();
         for (let i = 0; i < tools.length; i++) {
-            //console.log(toolsItem(tools[i]._id, 'pics/OO001EWIWW29_1_v2.png', tools[i].description));
-            $('#tools').append(
+            $('#'+tab).append(
                     toolsItem(tools[i]._id, "static/pics/" + tools[i].pictures[0], tools[i].description));
             //$('#' + tools[i]._id).one("click", addIssue);//adding by click
             $('#' + tools[i]._id).draggable({helper: 'clone'});//adding by drop
         }
     }
 
-
+    function getDataForTab(tab){
+        tab=tab||'tools';
+        var requests ={
+            'tab-dresses':'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf'
+        };
+    }
     $.ajax({
         url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',
         success: function (data) {
