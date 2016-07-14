@@ -7,6 +7,8 @@
     <title>Stylist assistant. Hello, bootstrap</title>
     <link rel="stylesheet" href="static/bower_components/bootstrap/dist/css/bootstrap.css">
     <link type="text/css" href="static/bower_components/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet"/>
+    <link href="static/look-template.css" rel="stylesheet">
+
 </head>
 <body>
 <style>
@@ -41,11 +43,11 @@
     }
 
     #canvas {
-        position: relative;
-        margin: auto;
-        border: 1px solid black;
-        width: 400px;
-        height: 400px;
+        /*position: relative;*/
+        /*margin: auto;*/
+        /*border: 1px solid black;*/
+        /*width: 400px;*/
+        /*height: 400px;*/
     }
 
     .cell {
@@ -65,12 +67,21 @@
 <div class="container">
     <div class="row">
         <div id="canvas-container" class="col-sm-7" style="height: 100vh; background-color: white">
-            <div id="canvas">
-                <div id="c11" style="top: 0; left: 0" class="cell"></div>
-                <div id="c12" style="top: 0; left: 200px" class="cell"></div>
-                <div id="c21" style="top: 200px; left: 0" class="cell"></div>
-                <div id="c22" style="top: 200px; left: 200px" class="cell"></div>
+            <div id="switcher">
+                <select size="1" name="template">
+                    <option disabled>Выберите шаблон</option>
+                    <option selected value="weekend_gateway">weekend_gateway</option>
+                    <option value="c22">c22</option>
+                    <option value="c3">c3</option>
+                </select>
             </div>
+                <div id="canvas" style="position: relative">
+                    <!--<div id="c11" style="top: 0; left: 0" class="cell"></div>-->
+                    <!--<div id="c12" style="top: 0; left: 200px" class="cell"></div>-->
+                    <!--<div id="c21" style="top: 200px; left: 0" class="cell"></div>-->
+                    <!--<div id="c22" style="top: 200px; left: 200px" class="cell"></div>-->
+                </div>
+
         </div>
         <div id="right-side" class="col-sm-5" style="height: 100vh;background-color: #eee">
             <ul>
@@ -98,6 +109,9 @@
             </div>
             <div id="tabs-outwear">
             </div>
+
+            <div id="tools" style="border-color: black">
+            </div>
             <!--menu was here and moved to bottom-->
             <!--<form>-->
             <!--<input id="screen" type="button" value="screen">-->
@@ -105,8 +119,7 @@
             <!--<label>maximal price<input id="maxprice" type="text" value="10000"></label>-->
             <!--<input type="button" id="filter-submit"-->
             <!--value="filter it" onclick="maxpriceChanged()">-->
-            <div id="tools-old" style="border-color: black">
-            </div>
+
             <!--<img id="top01" src="static/dresses/top01.jpg">-->
             <!--end issues div-->
         </div><!--end right-side -->
@@ -116,11 +129,18 @@
 <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
 <!--<script src="static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
 <script src="static/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="static/templates.js"></script>
 <script src="static/html2canvas.js"></script>
 <script>
+    var links = []; //['static/pics/out01.png', 'static/pics/AT006EMFQJ85_1_v2.png', 'static/pics/OO001EWIWW29_1_v2.png'];
+    render_template("weekend_gateway", links);
+    $('#switcher').change(function () {
+        console.log('selected ' + $("#switcher :selected").val());
+        render_template($("#switcher :selected").val(), links);
+    });
 
     $("#right-side").tabs();
-    $("#right-side").tabs( "option", "active", 4 );
+    $("#right-side").tabs("option", "active", 4);
     var tools_filter = {};
     const tools_max = 5;
     tools = {};
@@ -137,7 +157,7 @@
         for (let i = 0; i < tools.length; i++) {
             //console.log(toolsItem(tools[i]._id, 'pics/OO001EWIWW29_1_v2.png', tools[i].description));
             $('#tools').append(
-                    toolsItem(tools[i]._id, "pics/" + tools[i].pictures[0], tools[i].description));
+                    toolsItem(tools[i]._id, "static/pics/" + tools[i].pictures[0], tools[i].description));
             //$('#' + tools[i]._id).one("click", addIssue);//adding by click
             $('#' + tools[i]._id).draggable({helper: 'clone'});//adding by drop
         }
@@ -167,17 +187,21 @@
     function droppedIn(event, ui) {
         console.log('in droppedIn ' + ui.draggable.attr('id') +
                 ui.draggable.attr('src') + ui.draggable.attr('title'));
-        var cellSize = 200;
-        //$(this).append("<p>ppp<p>");
+        $(this).empty();
         $(this).append(
-                '<img id="' + ui.draggable.attr('id') + '"class="look-item" src="' +
-                ui.draggable.attr('src') + '" title="' + ui.draggable.attr('title') + '">'
+          '<img src='+ ui.draggable.attr('src') +'>'
         );
+//        $(this).attr('src',ui.draggable.attr('src'));
+        //$(this).append("<p>ppp<p>");
+//        $(this).append(
+//                '<img id="' + ui.draggable.attr('id') + '"class="look-item" src="' +
+//                ui.draggable.attr('src') + '" title="' + ui.draggable.attr('title') + '">'
+//        );
     }
 
-    $('#c11').droppable({drop: droppedIn});
-    $('#c12').droppable({drop: droppedIn});
-    $('#c22').droppable({drop: droppedIn});
+    $('#0').droppable({drop: droppedIn});
+    $('#1').droppable({drop: droppedIn});
+    $('#2').droppable({drop: droppedIn});
 
 
     function addIssue(e) {

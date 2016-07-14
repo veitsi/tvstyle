@@ -34,9 +34,9 @@ var templates = {
     'weekend_gateway': {
         items: 4, html: `
       <div class="item placeholder">Bla Bla Bla</div>
-      <div class="item top"><img id="0" src="" width=50 height=80></div>
-      <div class="item bottom"></div>
-      <div class="item shoes"></div>
+      <div id="0" class="item top">></div>
+      <div id="1" class="item bottom"></div>
+      <div id="2" class="item shoes"></div>
       <div class="item bag"></div>
     `
     }

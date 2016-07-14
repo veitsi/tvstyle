@@ -33,9 +33,9 @@ def hello_world():
     return render_template('index.html')
 
 
-@app.route('/pics/<string:jpgfile>', methods=['GET'])
+@app.route('/static/pics/<string:jpgfile>', methods=['GET'])
 def pic(jpgfile):
-    pathtopng = 'pics/'
+    pathtopng = 'static/pics/'
     pngfile = pathtopng + jpgfile[:-3] + 'png'
     log('we look for' + jpgfile)
     # abort(404)
