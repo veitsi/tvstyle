@@ -2,10 +2,10 @@
   width: 100%;
   height: 100%;
 }
-.item {
+#canvas .item {
   position: absolute;
 }
-.placeholder {
+#canvas .placeholder {
   width: 169px;
   height: 27px;
   left: 150px;
@@ -17,7 +17,7 @@
   color: black;
   text-align: center;
 }
-.top {
+#canvas .top {
   left: 175px;
   top: 90px;
   z-index: 2;
@@ -29,10 +29,10 @@
   background-color: #eee;
   opacity: .5;
 }
-.top:hover {
+#canvas .top:hover {
   background-color: #f3f3f3;
 }
-.bottom {
+#canvas .bottom {
   left: 275px;
   top: 82px;
   z-index: 1;
@@ -44,10 +44,10 @@
   background-color: #eee;
   opacity: .5;
 }
-.bottom:hover {
+#canvas .bottom:hover {
   background-color: #f3f3f3;
 }
-.shoes {
+#canvas .shoes {
   left: 195px;
   top: 220px;
   z-index: 5;
@@ -59,10 +59,10 @@
   background-color: #eee;
   opacity: .5;
 }
-.shoes:hover {
+#canvas .shoes:hover {
   background-color: #f3f3f3;
 }
-.bag {
+#canvas .bag {
   left: 275px;
   top: 227px;
   z-index: 3;
@@ -74,6 +74,19 @@
   background-color: #eee;
   opacity: .5;
 }
-.bag:hover {
+#canvas .bag:hover {
   background-color: #f3f3f3;
+}
+
+
+#canvas .opacity {
+  opacity: 1;
+}
+#canvas .dropabble {
+  background-color: #f93;
+  opacity: .3;
+}
+#canvas .drophover {
+  background-color: #f93;
+  opacity: .7;
 }
