@@ -4,29 +4,27 @@
   background-color: aliceblue;
 }
 #canvas {
-  width: 800px;
-  height: 600px;
+  width: 710px;
+  height: 710px;
   position: relative;
   background-color: #fff;
-  /*---------------------------------------*/
 }
 #canvas .item-img {
-  left: 495.733px;
+  left: 430px;
   top: 180.841px;
   position: absolute;
   z-index: 13;
   transform: matrix(1, 0, 0, 1, 0, 0);
 }
 #canvas .item-1 {
-  left: 100.931px;
+  left: 35px;
   top: 118.095px;
   position: absolute;
   z-index: 7;
   transform: matrix(1, 0, 0, 1, 0, 0);
   width: 134px;
   height: 139px;
-  border: 1px dashed transparent;
-  border-color: #ccc;
+  border: 1px dashed #ccc;
   background-color: #eee;
   opacity: .5;
 }
@@ -34,7 +32,7 @@
   background-color: #ab4444;
 }
 #canvas .border-1 {
-  left: 95.206px;
+  left: 30px;
   top: 116.343px;
   position: absolute;
   z-index: 10;
@@ -42,15 +40,14 @@
   pointer-events: none;
 }
 #canvas .item-2 {
-  left: 260.931px;
+  left: 196px;
   top: 122.766px;
   position: absolute;
   z-index: 3;
   transform: matrix(1, 0, 0, 1, 0, 0);
   width: 216px;
   height: 215px;
-  border: 1px dashed transparent;
-  border-color: #ccc;
+  border: 1px dashed #ccc;
   background-color: #eee;
   opacity: .5;
 }
@@ -58,7 +55,7 @@
   background-color: #ab4444;
 }
 #canvas .border-2 {
-  left: 254.038px;
+  left: 190px;
   top: 115.175px;
   position: absolute;
   z-index: 4;
@@ -66,15 +63,14 @@
   pointer-events: none;
 }
 #canvas .item-3 {
-  left: 99.763px;
+  left: 35px;
   top: 276.927px;
   position: absolute;
   z-index: 9;
   transform: matrix(1, 0, 0, 1, 0, 0);
   width: 134px;
   height: 139px;
-  border: 1px dashed transparent;
-  border-color: #ccc;
+  border: 1px dashed #ccc;
   background-color: #eee;
   opacity: .5;
 }
@@ -82,7 +78,7 @@
   background-color: #ab4444;
 }
 #canvas .border-3 {
-  left: 94.038px;
+  left: 30px;
   top: 274.007px;
   position: absolute;
   z-index: 11;
@@ -90,15 +86,14 @@
   pointer-events: none;
 }
 #canvas .item-4 {
-  left: 100.931px;
+  left: 35px;
   top: 433.423px;
   position: absolute;
   z-index: 8;
   transform: matrix(1, 0, 0, 1, 0, 0);
   width: 134px;
   height: 139px;
-  border: 1px dashed transparent;
-  border-color: #ccc;
+  border: 1px dashed #ccc;
   background-color: #eee;
   opacity: .5;
 }
@@ -106,7 +101,7 @@
   background-color: #ab4444;
 }
 #canvas .border-4 {
-  left: 95.206px;
+  left: 30px;
   top: 430.504px;
   position: absolute;
   z-index: 12;
@@ -114,15 +109,14 @@
   pointer-events: none;
 }
 #canvas .item-5 {
-  left: 291.296px;
+  left: 226px;
   top: 384.372px;
   position: absolute;
   z-index: 5;
   transform: matrix(1, 0, 0, 1, 0, 0);
   width: 145px;
   height: 150px;
-  border: 1px dashed transparent;
-  border-color: #ccc;
+  border: 1px dashed #ccc;
   background-color: #eee;
   opacity: .5;
 }
@@ -130,7 +124,7 @@
   background-color: #ab4444;
 }
 #canvas .border-5 {
-  left: 285.571px;
+  left: 220px;
   top: 381.453px;
   position: absolute;
   z-index: 6;
@@ -138,15 +132,14 @@
   pointer-events: none;
 }
 #canvas .item-6 {
-  left: 494.507px;
+  left: 430px;
   top: 350.504px;
   position: absolute;
   z-index: 1;
   transform: matrix(1, 0, 0, 1, 0, 0);
   width: 217px;
   height: 221px;
-  border: 1px dashed transparent;
-  border-color: #ccc;
+  border: 1px dashed #ccc;
   background-color: #eee;
   opacity: .5;
 }
@@ -154,7 +147,7 @@
   background-color: #ab4444;
 }
 #canvas .border-6 {
-  left: 487.615px;
+  left: 425px;
   top: 345.248px;
   position: absolute;
   z-index: 2;
