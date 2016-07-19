@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stylist assistant. Hello, bootstrap</title>
-    <link rel="stylesheet" href="static/bower_components/bootstrap/dist/css/bootstrap.css">
-    <link type="text/css" href="static/bower_components/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet"/>
+    <link href="static/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="static/bower_components/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet"/>
     <link href="static/look-template.css" rel="stylesheet">
 
 </head>
@@ -68,15 +68,14 @@
 <!--TODO add upper on bottom tabs -->
 <!--TODO узкие шмотки типа туфлей и поясов можно подымыть повыше в минуса-->
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div id="canvas-container" class="col-sm-7" style="height: 100vh; background-color: white">
             <div id="switcher">
                 <select size="1" name="template">
                     <option disabled>Выберите шаблон</option>
-                    <option selected value="weekend_gateway">weekend_gateway</option>
-                    <option value="c22">c22</option>
-                    <option value="c3">c3</option>
+                    <option value="weekend_gateway">weekend_gateway</option>
+                    <option selected value="hearts">hearts</option>
                 </select>
             </div>
             <div id="canvas" style="position: relative">
@@ -89,25 +88,19 @@
         </div>
         <div id="right-side" class="col-sm-5" style="height: 100vh;background-color: #eee">
             <ul style="font-size: 7px">
-                <!--<li><a href="#tabs-woman">Woman</a></li>-->
-                <!--<li><a href="#tabs-man">Man</a></li>-->
                 <!--<li><a href="#tabs-home">Home</a></li>-->
                 <!--<br><br><br>-->
-                <li><a href="#tab-all">Всё</a></li>
+                <!--<li><a href="#tab-all">Всё</a></li>-->
                 <li><a href="#tab-dresses">Платья</a></li>
                 <li><a href="#tab-shoes">Обувь</a></li>
-                <li><a href="#tab-topblues">Топы&Блузки</a></li>
+                <li><a href="#tab-blues">Топы&Блузки</a></li>
                 <li><a href="#tab-skirts">Юбки</a></li>
                 <li><a href="#tab-acc">Аксессуары</a></li>
             </ul>
-            <!--<div id="tabs-woman">-->
-            <!--</div>-->
-            <!--<div id="tabs-man">-->
-            <!--</div>-->
             <!--<div id="tabs-home">-->
             <!--</div>-->
-            <div id="tab-all">all
-            </div>
+            <!--<div id="tab-all">all-->
+            <!--</div>-->
             <div id="tab-dresses">dresses
             </div>
             <div id="tab-shoes">shoes
@@ -116,7 +109,7 @@
             </div>
             <div id="tab-acc">acc
             </div>
-            <div id="tab-topblues">topblues
+            <div id="tab-blues">blues
             </div>
 
             <!--<div id="tools" style="border-color: black">-->
@@ -142,9 +135,10 @@
 <script src="static/html2canvas.js"></script>
 <script>
     var links = []; //['static/pics/out01.png', 'static/pics/AT006EMFQJ85_1_v2.png', 'static/pics/OO001EWIWW29_1_v2.png'];
-    render_template("weekend_gateway", links);
+    render_template($("#switcher :selected").val(), links);
     $('#switcher').change(function () {
         console.log('selected ' + $("#switcher :selected").val());
+
         render_template($("#switcher :selected").val(), links);
     });
 
@@ -174,17 +168,20 @@
     function getDataForTab(tab) {
         tab = tab || 'tab-all';
         var requests = {
-            'tools': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+            'tab-all': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
             'tab-dresses': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Платье"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
             'tab-shoes': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Туфли"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
-            'tab-blues': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Блуза"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`
+            'tab-blues': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Блуза"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+            'tab-skirts': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Юбка"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+            'tab-acc': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Косметичка"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`
+
         };
         $.ajax({
             url: requests[tab],
             success: function (data) {
                 console.log(data);
                 tools = data;
-                if (tab){
+                if (tab) {
                     for (let i = 0; i < tools.length; i++) {
                         tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
                         //console.log(tools[i].pictures[0])
@@ -195,22 +192,25 @@
             }
         });
     }
-    getDataForTab('tab-all');
+
     getDataForTab('tab-dresses');
     getDataForTab('tab-shoes');
+    getDataForTab('tab-blues');
+    getDataForTab('tab-skirts');
+    getDataForTab('tab-acc');
 
-//    $.ajax({
-//        url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',
-//        success: function (data) {
-//            console.log(data);
-//            tools = data;
-//            for (let i = 0; i < tools.length; i++) {
-//                tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
-//                //console.log(tools[i].pictures[0])
-//            }
-//            updateToolsFilter();
-//        }
-//    });
+    //    $.ajax({
+    //        url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',
+    //        success: function (data) {
+    //            console.log(data);
+    //            tools = data;
+    //            for (let i = 0; i < tools.length; i++) {
+    //                tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
+    //                //console.log(tools[i].pictures[0])
+    //            }
+    //            updateToolsFilter();
+    //        }
+    //    });
 
 
     function canvasItem(id, src, alt) {
@@ -233,10 +233,21 @@
 //                ui.draggable.attr('src') + '" title="' + ui.draggable.attr('title') + '">'
 //        );
     }
+    function render_template(template, links) {
+        console.log('processing ' + template);
+        $("#canvas").empty();
+        $('#canvas').append(templates[template].html);
+        var i = 0;
+        for (i; i < templates[template].items; i++) {
+            console.log("#" + i);
+            //$("#" + i).attr('src', links[i]);
+            $("#" + i).droppable({drop: droppedIn});
+        }
+    }
 
-    $('#0').droppable({drop: droppedIn});
-    $('#1').droppable({drop: droppedIn});
-    $('#2').droppable({drop: droppedIn});
+    //    $('#0').droppable({drop: droppedIn});
+    //    $('#1').droppable({drop: droppedIn});
+    //    $('#2').droppable({drop: droppedIn});
 
 
     function addIssue(e) {

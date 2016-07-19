@@ -39,17 +39,28 @@ var templates = {
       <div id="2" class="item shoes"></div>
       <div class="item bag"></div>
     `
+    },
+    'hearts': {
+        items: 5, html: `
+<div class="item-img__bg">
+            <img src="static/img/hearts_bg.jpg" width="530" height="542" alt="hearts">
+        </div>
+        <div class="item-img__text">
+            <img src="static/img/hearts_text.png" width="247" height="49" alt="some text">
+        </div>
+        <!--<div class="item-img__heart-1">-->
+            <!--<img src="static/img/hearts_black.png" width="139" height="137" alt="heart">-->
+        <!--</div>-->
+        <!--<div class="item-img__heart-2">-->
+            <!--<img src="static/img/hearts_black.png" width="138" height="136" alt="heart">-->
+        <!--</div>-->
+        <div id="0" class="item-1"></div>
+        <div id="1" class="item-2"></div>
+        <div id="2" class="item-3"></div>
+        <div id="3" class="item-4"></div>
+        <div id="4" class="item-5"></div>
+    `
     }
-};
 
-function render_template(template, links) {
-    console.log('processing ' + template);
-    $("#canvas").empty();
-    $('#canvas').append(templates[template].html);
-    var i = 0;
-    for (i; i < links.length; i++) {
-        //console.log("#" + i);
-        $("#" + i).attr('src', links[i])
-    }
-}
+};
 
