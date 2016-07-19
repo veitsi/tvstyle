@@ -21,6 +21,10 @@
         /*background-color: white;*/
         /*border: 1px black solid;*/
     }
+    .tools-item img{
+        max-width: 120px;
+        max-height: 100%;
+    }
 
     .look-item {
         position: absolute;
@@ -143,14 +147,14 @@
     });
 
     $("#right-side").tabs();
-    $("#right-side").tabs("option", "active", 1);
+    $("#right-side").tabs("option", "active", 0);
     var tools_filter = {};
     const tools_max = 5;
     tools = {};
 
     function toolsItem(id, src, alt) {
-        rez = '<img id="' + id + '"class="tools-item" src="' +
-                src + '" title="' + alt + '">';
+        rez = '<div class="tools-item"><img id="' + id + '" src="' +
+                src + '" title="' + alt + '"></div>';
         return rez;
     }
 
@@ -161,7 +165,11 @@
             $('#' + tab).append(
                     toolsItem(tools[i]._id, "static/pics/" + tools[i].pictures[0], tools[i].description));
             //$('#' + tools[i]._id).one("click", addIssue);//adding by click
-            $('#' + tools[i]._id).draggable({helper: 'clone'});//adding by drop
+            $('#' + tools[i]._id).draggable(
+                    {helper: 'clone'});//adding by drop
+//                     {helper:function(){
+//                         return '<div>Object</div>';
+//                     }})
         }
     }
 
@@ -223,6 +231,7 @@
         console.log('in droppedIn ' + ui.draggable.attr('id') +
                 ui.draggable.attr('src') + ui.draggable.attr('title'));
         $(this).empty();
+        $(this).addClass('opacity');
         $(this).append(
                 '<img src=' + ui.draggable.attr('src') + '>'
         );
