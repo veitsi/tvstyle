@@ -35,9 +35,10 @@ def hello_world():
 
 @app.route('/static/pics/<string:jpgfile>', methods=['GET'])
 def pic(jpgfile):
+    jpgfile=jpgfile[:-3] +'jpg'
     pathtopng = 'static/pics/'
     pngfile = pathtopng + jpgfile[:-3] + 'png'
-    log('we look for' + jpgfile)
+    log('we look for jpg' + jpgfile)
     # abort(404)
     if os.path.exists(pngfile):
         try:

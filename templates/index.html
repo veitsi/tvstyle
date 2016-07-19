@@ -93,6 +93,7 @@
                 <!--<li><a href="#tabs-man">Man</a></li>-->
                 <!--<li><a href="#tabs-home">Home</a></li>-->
                 <!--<br><br><br>-->
+                <li><a href="#tab-all">Всё</a></li>
                 <li><a href="#tab-dresses">Платья</a></li>
                 <li><a href="#tab-shoes">Обувь</a></li>
                 <li><a href="#tab-topblues">Топы&Блузки</a></li>
@@ -105,7 +106,9 @@
             <!--</div>-->
             <!--<div id="tabs-home">-->
             <!--</div>-->
-            <div id="tab-dresses">tabs-dresses
+            <div id="tab-all">all
+            </div>
+            <div id="tab-dresses">dresses
             </div>
             <div id="tab-shoes">shoes
             </div>
@@ -116,8 +119,8 @@
             <div id="tab-topblues">topblues
             </div>
 
-            <div id="tools" style="border-color: black">
-            </div>
+            <!--<div id="tools" style="border-color: black">-->
+            <!--</div>-->
             <!--menu was here and moved to bottom-->
             <!--<form>-->
             <!--<input id="screen" type="button" value="screen">-->
@@ -146,7 +149,7 @@
     });
 
     $("#right-side").tabs();
-    $("#right-side").tabs("option", "active", 0);
+    $("#right-side").tabs("option", "active", 1);
     var tools_filter = {};
     const tools_max = 5;
     tools = {};
@@ -158,7 +161,6 @@
     }
 
     function updateToolsFilter(tab) {
-        tab = tab || 'tools';
         console.log('in tab update');
         $('#' + tab).empty();
         for (let i = 0; i < tools.length; i++) {
@@ -170,27 +172,45 @@
     }
 
     function getDataForTab(tab) {
-        tab = tab || 'tools';
+        tab = tab || 'tab-all';
         var requests = {
             'tools': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
             'tab-dresses': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Платье"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
-            'tab-shoes': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Платье"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
-            'tab-blues': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Платье"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`
+            'tab-shoes': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Туфли"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+            'tab-blues': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Блуза"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`
         };
-    }
+        $.ajax({
+            url: requests[tab],
+            success: function (data) {
+                console.log(data);
+                tools = data;
+                if (tab){
+                    for (let i = 0; i < tools.length; i++) {
+                        tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
+                        //console.log(tools[i].pictures[0])
+                    }
+                    updateToolsFilter(tab);
+                }
 
-    $.ajax({
-        url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',
-        success: function (data) {
-            console.log(data);
-            tools = data;
-            for (let i = 0; i < tools.length; i++) {
-                tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
-                //console.log(tools[i].pictures[0])
             }
-            updateToolsFilter();
-        }
-    });
+        });
+    }
+    getDataForTab('tab-all');
+    getDataForTab('tab-dresses');
+    getDataForTab('tab-shoes');
+
+//    $.ajax({
+//        url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',
+//        success: function (data) {
+//            console.log(data);
+//            tools = data;
+//            for (let i = 0; i < tools.length; i++) {
+//                tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
+//                //console.log(tools[i].pictures[0])
+//            }
+//            updateToolsFilter();
+//        }
+//    });
 
 
     function canvasItem(id, src, alt) {
