@@ -1,3 +1,4 @@
+{% raw %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +31,7 @@
     /*li {*/
     /*height: 38px;*/
     /*}*/
-    #right-side li a{
+    #right-side li a {
         font-size: 10px;
     }
 
@@ -78,12 +79,12 @@
                     <option value="c3">c3</option>
                 </select>
             </div>
-                <div id="canvas" style="position: relative">
-                    <!--<div id="c11" style="top: 0; left: 0" class="cell"></div>-->
-                    <!--<div id="c12" style="top: 0; left: 200px" class="cell"></div>-->
-                    <!--<div id="c21" style="top: 200px; left: 0" class="cell"></div>-->
-                    <!--<div id="c22" style="top: 200px; left: 200px" class="cell"></div>-->
-                </div>
+            <div id="canvas" style="position: relative">
+                <!--<div id="c11" style="top: 0; left: 0" class="cell"></div>-->
+                <!--<div id="c12" style="top: 0; left: 200px" class="cell"></div>-->
+                <!--<div id="c21" style="top: 200px; left: 0" class="cell"></div>-->
+                <!--<div id="c22" style="top: 200px; left: 200px" class="cell"></div>-->
+            </div>
 
         </div>
         <div id="right-side" class="col-sm-5" style="height: 100vh;background-color: #eee">
@@ -157,23 +158,27 @@
     }
 
     function updateToolsFilter(tab) {
-        tab=tab||'tools';
+        tab = tab || 'tools';
         console.log('in tab update');
-        $('#'+tab).empty();
+        $('#' + tab).empty();
         for (let i = 0; i < tools.length; i++) {
-            $('#'+tab).append(
+            $('#' + tab).append(
                     toolsItem(tools[i]._id, "static/pics/" + tools[i].pictures[0], tools[i].description));
             //$('#' + tools[i]._id).one("click", addIssue);//adding by click
             $('#' + tools[i]._id).draggable({helper: 'clone'});//adding by drop
         }
     }
 
-    function getDataForTab(tab){
-        tab=tab||'tools';
-        var requests ={
-            'tab-dresses':'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf'
+    function getDataForTab(tab) {
+        tab = tab || 'tools';
+        var requests = {
+            'tools': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+            'tab-dresses': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Платье"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+            'tab-shoes': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Платье"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+            'tab-blues': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Платье"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`
         };
     }
+
     $.ajax({
         url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',
         success: function (data) {
@@ -199,7 +204,7 @@
                 ui.draggable.attr('src') + ui.draggable.attr('title'));
         $(this).empty();
         $(this).append(
-          '<img src='+ ui.draggable.attr('src') +'>'
+                '<img src=' + ui.draggable.attr('src') + '>'
         );
 //        $(this).attr('src',ui.draggable.attr('src'));
         //$(this).append("<p>ppp<p>");
@@ -275,6 +280,7 @@
 
 </body>
 </html>
+{% endraw %}
 <!--types:
 ['Мокасины', 'Слипоны', 'Кроссовки', 'Платье', 'Футболка', 'Ремень', 'Сапоги', 'Полусапоги', 'Шляпа', 'Босоножки', 'Туника пляжная', 'Сандалии', 'Блуза', 'Майка', 'Сумка', 'Кеды', 'Клатч', 'Пуловер', 'Джинсы', 'Костюм', 'Трусы', 'Юбка', 'Ботинки', 'Шорты джинсовые', 'Шапка', 'Рюкзак', 'Гетры', 'Кардиган', 'Лоферы', 'Джемпер', 'Куртка утепленная', 'Сабо', 'Очки солнцезащитные', 'Чехол для iPhone', 'Угги', 'Туника', 'Палантин', 'Комбинезон', 'Эспадрильи', 'Балетки', 'Ключница', 'Платок', 'Шлепанцы', 'Сумка спортивная', 'Свитшот', 'Топ', 'Бутсы зальные', 'Бейсболка', 'Резиновые сапоги', 'Рубашка', 'Визитница', 'Лонгслив', 'Свитер', 'Боди', 'Туфли', 'Кеды на танкетке', 'Ботильоны', 'Галстук', 'Сорочка ночная', 'Бюстгальтер', 'Брюки', 'Портмоне', 'Кошелек', 'Плащ', 'Часы', 'Поло', 'Купальник', 'Тапочки', 'Манишка', 'Жакет', 'Сланцы', 'Парка', 'Шарф', 'Лиф', 'Дубленка', 'Дутики', 'Шорты', 'Водолазка', 'Куртка', 'Комплект 6 шт.', 'Худи', 'Костюм спортивный', 'Куртка кожаная', 'Шорты для плавания', 'Шуба', 'Накидка', 'Пальто', 'Джеггинсы',  'Капри', 'Плавки', 'Брюки спортивные', 'Косметичка', 'Кепка', 'Юбка джинсовая', 'Зонт-трость', 'Портупея', 'Пиджак', 'Платье джинсовое', 'Сарафан', 'Панама', 'Леггинсы', 'Чехол для IPhone', 'Cлипоны', 'Термобелье', 'Болеро', 'Толстовка', 'Валенки', 'Шорты спортивные', 'Кредитница', 'Ветровка', 'Шиповки', 'Жилет', 'Футболка спортивная', 'Чиносы', 'Куртка джинсовая', 'Чехол для iPhone 5/5s', 'Майка домашняя', 'Пуховик', 'Сумка дорожная', 'Мешок', 'Жилет утепленный', 'Зонт складной', 'Топсайдеры', 'Бутсы', 'Майка спортивная', 'Чехол для планшета', 'Пояс', 'Топ спортивный', 'Рубашка джинсовая', 'Акваобувь', 'Наушники', 'Перчатки', 'Пижама', 'Топ бельевой', 'Ботфорты', 'Носки', 'Лонгслив спортивный', 'Комбинезон джинсовый', 'Пояс для чулок', 'Обложка для документов', 'Комплект 2 шт.', 'Жилет джинсовый', 'Брюки домашние', 'Колготки', 'Оправа', 'Пенал', 'Олимпийка',  'Бабочка', 'Белье корректирующее', 'Гольфы', 'Подтяжки', 'Луноходы', 'Платье пляжное', 'Воротник', 'Бриджи', 'Комплект термобелья', 'Сумка поясная', 'Полотенце', 'Сорочка','Халат домашний', 'Спортивный костюм', 'Подследники', 'Футболка домашняя', 'Юбка-шорты', 'Платок носовой', 'Портфель', 'Топ домашний', 'Полупальто', 'Ботинки трекинговые', 'Чехол для iPhone 6/6s', 'Унты', 'Комбинация', 'Резиновые полусапоги', 'Жилет кожаный', 'Угги на танкетке', 'Жилет меховой', 'Повязка', 'Спортивная сумка ', 'Комплект ремней', 'Берет', 'Чехол для телефона', 'Чемодан', 'Зажим для купюр', 'Пончо', 'Платье домашнее','Козырек', 'Шорты домашние', 'Лонгслив домашний', 'Парео', 'Сарафан джинсовый', 'Комплект пляжный', 'Несессер'
 -->

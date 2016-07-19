@@ -1,1 +1,4 @@
 .idea/
+static/bower_components
+__pycache__
+
