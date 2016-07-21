@@ -102,7 +102,7 @@
             </div>
             <span id="slider-span">
                 choose scale:<div id="slider" style="width: 300px; display: inline-block"></div>
-                <button onclick="stopSlider()">stop_slider</button>
+                <!--<button onclick="stopSlider()">finish scaling</button>-->
             </span>
             <div id="canvas" style="position: relative">
                 <!--<div id="c11" style="top: 0; left: 0" class="cell"></div>-->
@@ -168,6 +168,7 @@
         render_template($("#switcher :selected").val(), links);
     });
     $('#slider-span').hide();
+    $('#canvas').attr('disabled','disabled');
 
     $("#right-side").tabs();
     $("#right-side").tabs("option", "active", 0);
@@ -253,7 +254,9 @@
                 console.log('you changed slider to '+ui.value);
                 var currentScale=100+2*ui.value;
                 $(img).attr('style','max-height: '+currentScale+"%;"+'max-width: '+currentScale+"%;");
-            }
+
+            },
+            change:stopSlider
         });
     }
 
