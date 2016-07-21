@@ -39,6 +39,7 @@ def hello_resize():
 
 @app.route('/static/pics/<string:jpgfile>', methods=['GET'])
 def pic(jpgfile):
+    print('you ask for picure')
     jpgfile=jpgfile[:-3] +'jpg'
     pathtopng = 'static/pics/'
     pngfile = pathtopng + jpgfile[:-3] + 'png'
