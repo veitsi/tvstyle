@@ -32,6 +32,10 @@ def hello_world():
     # return "hello"
     return render_template('index.html')
 
+@app.route('/resize')
+def hello_resize():
+    return render_template('resize-test.html')
+
 
 @app.route('/static/pics/<string:jpgfile>', methods=['GET'])
 def pic(jpgfile):
