@@ -57,13 +57,18 @@
         /*width: 400px;*/
         /*height: 400px;*/
     }
+    #canvas div{
+
+    }
     #canvas .opacity{
         opacity: 1;
         background-color: transparent;
+
     }
     #canvas img{
-        max-width: 100%;
-        max-height: 100%;
+        display: block;
+        max-width: 120%;
+        max-height: 120%;
 margin: auto    }
 
     .cell {
@@ -103,8 +108,8 @@ margin: auto    }
                 <!--<li><a href="#tabs-home">Home</a></li>-->
                 <!--<br><br><br>-->
                 <!--<li><a href="#tab-all">Всё</a></li>-->
-                <li><a href="#tab-dresses">Платья</a></li>
-                <li><a href="#tab-shoes">Обувь</a></li>
+                <li><a id="tab-dresses" href="#">Платья</a></li>
+                <li><a id="tab-shoes" href="#">Обувь</a></li>
                 <li><a href="#tab-blues">Топы&Блузки</a></li>
                 <li><a href="#tab-skirts">Юбки</a></li>
                 <li><a href="#tab-acc">Аксессуары</a></li>
@@ -113,10 +118,10 @@ margin: auto    }
             <!--</div>-->
             <!--<div id="tab-all">all-->
             <!--</div>-->
-            <div id="tab-dresses">dresses
-            </div>
-            <div id="tab-shoes">shoes
-            </div>
+            <!--<div id="tab-dresses">dresses-->
+            <!--</div>-->
+            <!--<div id="tab-shoes">shoes-->
+            <!--</div>-->
             <div id="tab-skirts">skirts
             </div>
             <div id="tab-acc">acc
@@ -156,6 +161,7 @@ margin: auto    }
 
     $("#right-side").tabs();
     $("#right-side").tabs("option", "active", 0);
+    $("#tab-dresses").click=function(){alert('tab-dresses clicked')};
     var tools_filter = {};
     const tools_max = 5;
     tools = {};
@@ -209,11 +215,11 @@ margin: auto    }
         });
     }
 
-    getDataForTab('tab-dresses');
-    getDataForTab('tab-shoes');
-    getDataForTab('tab-blues');
-    getDataForTab('tab-skirts');
-    getDataForTab('tab-acc');
+//    getDataForTab('tab-dresses');
+//    getDataForTab('tab-shoes');
+//    getDataForTab('tab-blues');
+//    getDataForTab('tab-skirts');
+//    getDataForTab('tab-acc');
 
     //    $.ajax({
     //        url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',

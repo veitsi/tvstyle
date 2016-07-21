@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>resize test</title>
+    <link href="static/bower_components/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet"/>
+
+</head>
+<body>
+<style>
+    .cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        height: 300px;
+        border: 1px slateblue dashed;
+    }
+
+</style>
+<div id="slider" style="width: 300px"></div>
+<div class="cell">
+    <img class="item1" src="static/pics/AD006EWHLR86_1_v2.png"
+         style=" max-height: 100%">
+</div>
+<div class="cell">
+    <img class="item2" src="static/pics/TA171AWHXZ24_1_v1.png"
+         style=" max-height: 100%">
+</div>
+
+<script src="static/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="static/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script>
+    $(function () {
+        $("#slider").slider({
+            change: function (event, ui) {
+                var currentScale=100+1*ui.value;
+                //alert('you changed slider to '+ui.value);
+                $('.item1').attr('style','max-height: '+currentScale+"%;");
+                $('.item2').attr('style','max-height: '+currentScale+"%;");
+
+            }
+        });
+    });
+</script>
+</body>
+</html>
