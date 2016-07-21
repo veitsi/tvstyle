@@ -82,3 +82,5 @@ def save_transp(jpgfile, pngfile):
     print('calculated  ', x1, y1, x2, y2)
 
     img.crop((x1, y1, x2, y2)).save(pngfile, "PNG")
+    # img.thumbnail((120,120))
+    # img.save('out.thumbnail.png',"PNG")

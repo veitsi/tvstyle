@@ -21,9 +21,10 @@
         /*background-color: white;*/
         /*border: 1px black solid;*/
     }
-    .tools-item img{
+
+    .tools-item img {
         max-width: 120px;
-        max-height: 100%;
+        max-height: 120px;
     }
 
     .look-item {
@@ -57,19 +58,23 @@
         /*width: 400px;*/
         /*height: 400px;*/
     }
-    #canvas div{
 
+    #canvas div {
+        overflow: hidden;
     }
-    #canvas .opacity{
+
+    #canvas .opacity {
         opacity: 1;
         background-color: transparent;
 
     }
-    #canvas img{
+
+    #canvas img {
         display: block;
-        max-width: 120%;
-        max-height: 120%;
-margin: auto    }
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto
+    }
 
     .cell {
         position: absolute;
@@ -88,13 +93,17 @@ margin: auto    }
 <div class="container-fluid">
     <div class="row">
         <div id="canvas-container" class="col-sm-7" style="height: 100vh; background-color: white">
-            <div id="switcher">
+            <div id="switcher" style="display: inline-block">
                 <select size="1" name="template">
                     <option disabled>Выберите шаблон</option>
                     <option value="weekend_gateway">weekend_gateway</option>
                     <option selected value="hearts">hearts</option>
                 </select>
             </div>
+            <span id="slider-span">
+                choose scale:<div id="slider" style="width: 300px; display: inline-block"></div>
+                <button onclick="stopSlider()">stop_slider</button>
+            </span>
             <div id="canvas" style="position: relative">
                 <!--<div id="c11" style="top: 0; left: 0" class="cell"></div>-->
                 <!--<div id="c12" style="top: 0; left: 200px" class="cell"></div>-->
@@ -108,8 +117,8 @@ margin: auto    }
                 <!--<li><a href="#tabs-home">Home</a></li>-->
                 <!--<br><br><br>-->
                 <!--<li><a href="#tab-all">Всё</a></li>-->
-                <li><a id="tab-dresses" href="#">Платья</a></li>
-                <li><a id="tab-shoes" href="#">Обувь</a></li>
+                <li><a href="#tab-dresses">Платья</a></li>
+                <li><a href="#tab-shoes">Обувь</a></li>
                 <li><a href="#tab-blues">Топы&Блузки</a></li>
                 <li><a href="#tab-skirts">Юбки</a></li>
                 <li><a href="#tab-acc">Аксессуары</a></li>
@@ -118,10 +127,10 @@ margin: auto    }
             <!--</div>-->
             <!--<div id="tab-all">all-->
             <!--</div>-->
-            <!--<div id="tab-dresses">dresses-->
-            <!--</div>-->
-            <!--<div id="tab-shoes">shoes-->
-            <!--</div>-->
+            <div id="tab-dresses">dresses
+            </div>
+            <div id="tab-shoes">shoes
+            </div>
             <div id="tab-skirts">skirts
             </div>
             <div id="tab-acc">acc
@@ -158,10 +167,13 @@ margin: auto    }
 
         render_template($("#switcher :selected").val(), links);
     });
+    $('#slider-span').hide();
 
     $("#right-side").tabs();
     $("#right-side").tabs("option", "active", 0);
-    $("#tab-dresses").click=function(){alert('tab-dresses clicked')};
+    $("#tab-dresses").click = function () {
+        alert('tab-dresses clicked')
+    };
     var tools_filter = {};
     const tools_max = 5;
     tools = {};
@@ -179,12 +191,11 @@ margin: auto    }
             $('#' + tab).append(
                     toolsItem(tools[i]._id, "static/pics/" + tools[i].pictures[0], tools[i].description));
             //$('#' + tools[i]._id).one("click", addIssue);//adding by click
-            $('#' + tools[i]._id).draggable(
-                    {helper: 'clone'});//adding by drop
-//                     {helper:function(){
-//                         return '<div>Object</div>';
-//                     }})
+//            $('#' + tools[i]._id).draggable(
+
         }
+        $('.tools-item img').draggable(
+                {helper: 'clone'});
     }
 
     function getDataForTab(tab) {
@@ -215,25 +226,11 @@ margin: auto    }
         });
     }
 
-//    getDataForTab('tab-dresses');
-//    getDataForTab('tab-shoes');
-//    getDataForTab('tab-blues');
-//    getDataForTab('tab-skirts');
-//    getDataForTab('tab-acc');
-
-    //    $.ajax({
-    //        url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',
-    //        success: function (data) {
-    //            console.log(data);
-    //            tools = data;
-    //            for (let i = 0; i < tools.length; i++) {
-    //                tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
-    //                //console.log(tools[i].pictures[0])
-    //            }
-    //            updateToolsFilter();
-    //        }
-    //    });
-
+    getDataForTab('tab-dresses');
+    getDataForTab('tab-shoes');
+    getDataForTab('tab-blues');
+    getDataForTab('tab-skirts');
+    getDataForTab('tab-acc');
 
     function canvasItem(id, src, alt) {
         rez = '<img id="' + id + '"class="tools-item" src="' +
@@ -241,14 +238,36 @@ margin: auto    }
         return rez;
     }
 
+    function stopSlider(){
+        console.log('try to stop slider');
+        $('#slider').slider('destroy');
+        $('#slider-span').hide();
+    }
+
+    function scaleCellContent(){
+        console.log(''+this+' clicked');
+        $('#slider-span').show();
+        var img=this;
+        $('#slider').slider({
+            slide:function(event,ui){
+                console.log('you changed slider to '+ui.value);
+                var currentScale=100+2*ui.value;
+                $(img).attr('style','max-height: '+currentScale+"%;"+'max-width: '+currentScale+"%;");
+            }
+        });
+    }
+
     function droppedIn(event, ui) {
         console.log('in droppedIn ' + ui.draggable.attr('id') +
                 ui.draggable.attr('src') + ui.draggable.attr('title'));
         $(this).empty();
         $(this).addClass('opacity');
-        $(this).append(
-                '<img src=' + ui.draggable.attr('src') + '>'
-        );
+        $('<img src=' + ui.draggable.attr('src') + '>').
+        click(scaleCellContent).appendTo(this);
+//        $(this).append(
+//                '<img src=' + ui.draggable.attr('src') + '>'
+//        );
+
 //        $(this).attr('src',ui.draggable.attr('src'));
         //$(this).append("<p>ppp<p>");
 //        $(this).append(
@@ -339,6 +358,18 @@ margin: auto    }
 ['Мокасины', 'Слипоны', 'Кроссовки', 'Платье', 'Футболка', 'Ремень', 'Сапоги', 'Полусапоги', 'Шляпа', 'Босоножки', 'Туника пляжная', 'Сандалии', 'Блуза', 'Майка', 'Сумка', 'Кеды', 'Клатч', 'Пуловер', 'Джинсы', 'Костюм', 'Трусы', 'Юбка', 'Ботинки', 'Шорты джинсовые', 'Шапка', 'Рюкзак', 'Гетры', 'Кардиган', 'Лоферы', 'Джемпер', 'Куртка утепленная', 'Сабо', 'Очки солнцезащитные', 'Чехол для iPhone', 'Угги', 'Туника', 'Палантин', 'Комбинезон', 'Эспадрильи', 'Балетки', 'Ключница', 'Платок', 'Шлепанцы', 'Сумка спортивная', 'Свитшот', 'Топ', 'Бутсы зальные', 'Бейсболка', 'Резиновые сапоги', 'Рубашка', 'Визитница', 'Лонгслив', 'Свитер', 'Боди', 'Туфли', 'Кеды на танкетке', 'Ботильоны', 'Галстук', 'Сорочка ночная', 'Бюстгальтер', 'Брюки', 'Портмоне', 'Кошелек', 'Плащ', 'Часы', 'Поло', 'Купальник', 'Тапочки', 'Манишка', 'Жакет', 'Сланцы', 'Парка', 'Шарф', 'Лиф', 'Дубленка', 'Дутики', 'Шорты', 'Водолазка', 'Куртка', 'Комплект 6 шт.', 'Худи', 'Костюм спортивный', 'Куртка кожаная', 'Шорты для плавания', 'Шуба', 'Накидка', 'Пальто', 'Джеггинсы',  'Капри', 'Плавки', 'Брюки спортивные', 'Косметичка', 'Кепка', 'Юбка джинсовая', 'Зонт-трость', 'Портупея', 'Пиджак', 'Платье джинсовое', 'Сарафан', 'Панама', 'Леггинсы', 'Чехол для IPhone', 'Cлипоны', 'Термобелье', 'Болеро', 'Толстовка', 'Валенки', 'Шорты спортивные', 'Кредитница', 'Ветровка', 'Шиповки', 'Жилет', 'Футболка спортивная', 'Чиносы', 'Куртка джинсовая', 'Чехол для iPhone 5/5s', 'Майка домашняя', 'Пуховик', 'Сумка дорожная', 'Мешок', 'Жилет утепленный', 'Зонт складной', 'Топсайдеры', 'Бутсы', 'Майка спортивная', 'Чехол для планшета', 'Пояс', 'Топ спортивный', 'Рубашка джинсовая', 'Акваобувь', 'Наушники', 'Перчатки', 'Пижама', 'Топ бельевой', 'Ботфорты', 'Носки', 'Лонгслив спортивный', 'Комбинезон джинсовый', 'Пояс для чулок', 'Обложка для документов', 'Комплект 2 шт.', 'Жилет джинсовый', 'Брюки домашние', 'Колготки', 'Оправа', 'Пенал', 'Олимпийка',  'Бабочка', 'Белье корректирующее', 'Гольфы', 'Подтяжки', 'Луноходы', 'Платье пляжное', 'Воротник', 'Бриджи', 'Комплект термобелья', 'Сумка поясная', 'Полотенце', 'Сорочка','Халат домашний', 'Спортивный костюм', 'Подследники', 'Футболка домашняя', 'Юбка-шорты', 'Платок носовой', 'Портфель', 'Топ домашний', 'Полупальто', 'Ботинки трекинговые', 'Чехол для iPhone 6/6s', 'Унты', 'Комбинация', 'Резиновые полусапоги', 'Жилет кожаный', 'Угги на танкетке', 'Жилет меховой', 'Повязка', 'Спортивная сумка ', 'Комплект ремней', 'Берет', 'Чехол для телефона', 'Чемодан', 'Зажим для купюр', 'Пончо', 'Платье домашнее','Козырек', 'Шорты домашние', 'Лонгслив домашний', 'Парео', 'Сарафан джинсовый', 'Комплект пляжный', 'Несессер'
 -->
 
+<!--//    $.ajax({-->
+<!--//        url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',-->
+<!--//        success: function (data) {-->
+<!--//            console.log(data);-->
+<!--//            tools = data;-->
+<!--//            for (let i = 0; i < tools.length; i++) {-->
+<!--//                tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';-->
+<!--//                //console.log(tools[i].pictures[0])-->
+<!--//            }-->
+<!--//            updateToolsFilter();-->
+<!--//        }-->
+<!--//    });-->
 <!--$('#down01').one("click", addIssue);-->
 <!--$('#shoes01').one("click", addIssue); -->
 <!--$('#acc01').one("click", addIssue);-->
