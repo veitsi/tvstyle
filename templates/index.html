@@ -191,7 +191,8 @@
     function updateToolsFilter(tab) {
         console.log('in tab update');
         $('#' + tab).empty();
-        for (let i = 0; i < tools.length; i++) {
+        var i = 0;
+        for (i; i < tools.length; i++) {
             $('#' + tab).append(
                     toolsItem(tools[i]._id, "static/pics/" + tools[i].pictures[0], tools[i].description));
             //$('#' + tools[i]._id).one("click", addIssue);//adding by click
