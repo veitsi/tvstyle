@@ -222,7 +222,8 @@
                 console.log(data);
                 tools = data;
                 if (tab) {
-                    for (let i = 0; i < tools.length; i++) {
+                    var i;
+                    for (i = 0; i < tools.length; i++) {
                         tools[i].pictures[0] = tools[i].pictures[0].substring(0, tools[i].pictures[0].length - 3) + 'png';
                         //console.log(tools[i].pictures[0])
                     }
