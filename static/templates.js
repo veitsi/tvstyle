@@ -15,22 +15,6 @@ var templates = {
 </div>
 `
     },
-    'c3': {
-        items: 3, html: `
-<div style="position:absolute; top:0; left: 0;
-    border: black 1px solid">
-    <img id="0" src="" width=50 height=80>
-</div>
-<div style="position:absolute; top:50px; left: 45px;
-    border: black 1px solid">
-    <img id="1" src="" width=80 height=80>
-</div>
-<div style="position: absolute;
-    top: 130px; left: 130px; border: black 1px solid">
-    <img id="2" src="" width=100 height=100>
-</div>
-`
-    },
     'weekend_gateway': {
         items: 4, html: `
       <div class="item placeholder">Bla Bla Bla</div>
@@ -48,12 +32,6 @@ var templates = {
         <div class="item-img__text">
             <img src="static/img/hearts_text.png" width="247" height="49" alt="some text">
         </div>
-        <!--<div class="item-img__heart-1">-->
-            <!--<img src="static/img/hearts_black.png" width="139" height="137" alt="heart">-->
-        <!--</div>-->
-        <!--<div class="item-img__heart-2">-->
-            <!--<img src="static/img/hearts_black.png" width="138" height="136" alt="heart">-->
-        <!--</div>-->
         <div id="0" class="item-1"></div>
         <div id="1" class="item-2"></div>
         <div id="2" class="item-3"></div>

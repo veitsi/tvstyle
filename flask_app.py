@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, send_file, \
-    abort, request, redirect, url_for, send_from_directory
+    abort, request,jsonify, redirect, url_for, send_from_directory
 import base64
 import random, string, os, datetime
 import transer
+import fragments
 
 
 app = Flask(__name__)
@@ -32,9 +33,11 @@ def hello_world():
     # return "hello"
     return render_template('index.html')
 
-@app.route('/resize')
-def hello_resize():
-    return render_template('resize-test.html')
+@app.route('/templates')
+def templates():
+    # templates={"week":"<img src='#'>"}
+    print(fragments.data)
+    return jsonify(fragments.data)
 
 
 @app.route('/static/pics/<string:jpgfile>', methods=['GET'])
@@ -53,6 +56,9 @@ def pic(jpgfile):
     transer.save_transp(jpgfile, pngfile)
     return send_file(pngfile)
 
+@app.route('/resize')
+def hello_resize():
+    return render_template('resize-test.html')
 
 @app.route('/looks')
 def looks():

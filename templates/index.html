@@ -161,14 +161,18 @@
 <script src="static/html2canvas.js"></script>
 <script>
     var links = []; //['static/pics/out01.png', 'static/pics/AT006EMFQJ85_1_v2.png', 'static/pics/OO001EWIWW29_1_v2.png'];
-    render_template($("#switcher :selected").val(), links);
+    $.get("/templates", function (data) {
+        console.log(data);
+        templates=data;
+        render_template($("#switcher :selected").val(), links);
+    });
     $('#switcher').change(function () {
         console.log('selected ' + $("#switcher :selected").val());
 
         render_template($("#switcher :selected").val(), links);
     });
     $('#slider-span').hide();
-    $('#canvas').attr('disabled','disabled');
+    $('#canvas').attr('disabled', 'disabled');
 
     $("#right-side").tabs();
     $("#right-side").tabs("option", "active", 0);
@@ -229,9 +233,10 @@
 
     getDataForTab('tab-dresses');
     getDataForTab('tab-shoes');
-    getDataForTab('tab-blues');
-    getDataForTab('tab-skirts');
-    getDataForTab('tab-acc');
+
+    //    getDataForTab('tab-blues');
+    //    getDataForTab('tab-skirts');
+    //    getDataForTab('tab-acc');
 
     function canvasItem(id, src, alt) {
         rez = '<img id="' + id + '"class="tools-item" src="' +
@@ -239,24 +244,24 @@
         return rez;
     }
 
-    function stopSlider(){
+    function stopSlider() {
         console.log('try to stop slider');
         $('#slider').slider('destroy');
         $('#slider-span').hide();
     }
 
-    function scaleCellContent(){
-        console.log(''+this+' clicked');
+    function scaleCellContent() {
+        console.log('' + this + ' clicked');
         $('#slider-span').show();
-        var img=this;
+        var img = this;
         $('#slider').slider({
-            slide:function(event,ui){
-                console.log('you changed slider to '+ui.value);
-                var currentScale=100+2*ui.value;
-                $(img).attr('style','max-height: '+currentScale+"%;"+'max-width: '+currentScale+"%;");
+            slide: function (event, ui) {
+                console.log('you changed slider to ' + ui.value);
+                var currentScale = 100 + 2 * ui.value;
+                $(img).attr('style', 'max-height: ' + currentScale + "%;" + 'max-width: ' + currentScale + "%;");
 
             },
-            change:stopSlider
+            change: stopSlider
         });
     }
 
@@ -265,8 +270,7 @@
                 ui.draggable.attr('src') + ui.draggable.attr('title'));
         $(this).empty();
         $(this).addClass('opacity');
-        $('<img src=' + ui.draggable.attr('src') + '>').
-        click(scaleCellContent).appendTo(this);
+        $('<img src=' + ui.draggable.attr('src') + '>').click(scaleCellContent).appendTo(this);
 //        $(this).append(
 //                '<img src=' + ui.draggable.attr('src') + '>'
 //        );
