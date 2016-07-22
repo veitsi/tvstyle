@@ -206,16 +206,18 @@
     function getDataForTab(tab) {
         tab = tab || 'tab-all';
         var requests = {
-            'tab-all': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
-            'tab-dresses': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Платье"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
-            'tab-shoes': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Туфли"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
-            'tab-blues': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Блуза"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
-            'tab-skirts': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Юбка"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
-            'tab-acc': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Косметичка"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`
+            'tab-all': "https%3A//api.mlab.com/api/1/databases/shopeiro/collections/tools%3Fl%3D12%26apiKey%3Dgyxt40ZuBvX0-Zs_ASfIphz87os52wgf",
+            'tab-dresses':
+"https%3A//api.mlab.com/api/1/databases/shopeiro/collections/tools%3Fl%3D12%26q%3D%7B%22typePrefix%22%3A%22%u041F%u043B%u0430%u0442%u044C%u0435%22%7D%26apiKey%3Dgyxt40ZuBvX0-Zs_ASfIphz87os52wgf",
+            'tab-shoes': "https%3A//api.mlab.com/api/1/databases/shopeiro/collections/tools%3Fl%3D12%26q%3D%7B%22typePrefix%22%3A%22%u0422%u0443%u0444%u043B%u0438%22%7D%26apiKey%3Dgyxt40ZuBvX0-Zs_ASfIphz87os52wgf"
+//            ,
+//            'tab-blues': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Блуза"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+//            'tab-skirts': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Юбка"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
+//            'tab-acc': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Косметичка"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`
 
         };
         $.ajax({
-            url: requests[tab],
+            url: unescape(requests[tab]),
             success: function (data) {
                 console.log(data);
                 tools = data;
