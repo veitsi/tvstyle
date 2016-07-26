@@ -1,5 +1,4 @@
 .idea/
-static/bower_components
 __pycache__
 log.txt
 
