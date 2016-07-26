@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html imports</title>
+    <link rel="import" href="static/look-templates.html">
+</head>
+<body>
+
+<div id="test">div test</div>
+<div id="content"></div>
+    <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="static/bower_components/webcomponentsjs/HTMLImports.min.js"></script>
+<script>
+    $(function () {
+        console.log('we started');
+    })
+</script>
+<script>
+
+    window.addEventListener('HTMLImportsLoaded', function (e) {
+        // all imports loaded
+        console.log('Loaded import: ');
+
+        var link = document.querySelector('link[rel="import"]');
+        // Clone the <template> in the import.
+        var template = link.import.querySelector('#hearts');
+        var clone = document.importNode(template.content, true);
+        document.querySelector('#content').appendChild(clone);
+    });
+</script>
+</body>
+</html>
