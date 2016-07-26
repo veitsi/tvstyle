@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>html imports</title>
-    <link rel="import" href="static/look-templates.html">
-    <link rel="stylesheet" href="static/look-template.css">
+    <link rel="import" href="static/templates.html">
+    <link rel="stylesheet" href="static/templates.css">
 </head>
 <body>
 
@@ -22,10 +22,9 @@
     window.addEventListener('HTMLImportsLoaded', function (e) {
         // all imports loaded
         console.log('Loaded import: ');
-
         var link = document.querySelector('link[rel="import"]');
         // Clone the <template> in the import.
-        var template = link.import.querySelector('#hearts');
+        var template = link.import.querySelector('#elegant');
         var clone = document.importNode(template.content, true);
         document.querySelector('#content').appendChild(clone);
     });
