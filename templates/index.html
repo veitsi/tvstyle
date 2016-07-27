@@ -99,9 +99,9 @@
             <div id="switcher" style="display: inline-block">
                 <select size="1" name="template">
                     <option disabled>Выберите шаблон</option>
-                    <option value="elegant">elegant</option>
+                    <option selected value="elegant">elegant</option>
                     <option value="ink">ink</option>
-                    <option selected value="hearts">hearts</option>
+                    <option value="hearts">hearts</option>
                     <option value="c11">c11</option>
                 </select>
             </div>
@@ -278,14 +278,14 @@
     }
 
     function droppedIn(event, ui) {
-        console.log('in droppedIn ' + ui.draggable.attr('id') +
-                ui.draggable.attr('src') + ui.draggable.attr('title'));
+        if (!$(this).is(":hover")){return}
+//        console.log('in droppedIn ' + ui.draggable.attr('id'));
+        console.log('in droppedIn ' + $(this).is(":hover"));
+
         $(this).empty();
-        $(this).addClass('opacity');
+        //$(this).addClass('opacity');
         $('<img src=' + ui.draggable.attr('src') + '>').click(scaleCellContent).appendTo(this);
-//        $(this).append(
-//                '<img src=' + ui.draggable.attr('src') + '>'
-//        );
+        console.log('dropping over');
 
 //        $(this).attr('src',ui.draggable.attr('src'));
         //$(this).append("<p>ppp<p>");
