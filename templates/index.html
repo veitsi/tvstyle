@@ -8,7 +8,10 @@
     <title>Stylist assistant. Hello, bootstrap</title>
     <link href="static/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="static/bower_components/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet"/>
-    <link href="static/look-template.css" rel="stylesheet">
+    <link href="static/templates.css" rel="stylesheet">
+    <link rel="import" href="static/templates.html">
+    <script src="static/bower_components/webcomponentsjs/HTMLImports.min.js"></script>
+    <script src="static/templates.js"></script>
 
 </head>
 <body>
@@ -96,8 +99,10 @@
             <div id="switcher" style="display: inline-block">
                 <select size="1" name="template">
                     <option disabled>Выберите шаблон</option>
-                    <option value="weekend_gateway">weekend_gateway</option>
+                    <option value="elegant">elegant</option>
+                    <option value="ink">ink</option>
                     <option selected value="hearts">hearts</option>
+                    <option value="c11">c11</option>
                 </select>
             </div>
             <span id="slider-span">
@@ -105,10 +110,6 @@
                 <!--<button onclick="stopSlider()">finish scaling</button>-->
             </span>
             <div id="canvas" style="position: relative">
-                <!--<div id="c11" style="top: 0; left: 0" class="cell"></div>-->
-                <!--<div id="c12" style="top: 0; left: 200px" class="cell"></div>-->
-                <!--<div id="c21" style="top: 200px; left: 0" class="cell"></div>-->
-                <!--<div id="c22" style="top: 200px; left: 200px" class="cell"></div>-->
             </div>
 
         </div>
@@ -159,16 +160,15 @@
 <script src="static/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script src="static/html2canvas.js"></script>
 <script>
-    var links = []; //['static/pics/out01.png', 'static/pics/AT006EMFQJ85_1_v2.png', 'static/pics/OO001EWIWW29_1_v2.png'];
-    $.get("/templates", function (data) {
-        console.log(data);
-        templates=data;
-        render_template($("#switcher :selected").val(), links);
+     window.addEventListener('HTMLImportsLoaded', function (e) {
+        console.log('Loaded import: ');
+        loadTemplate($("#switcher :selected").val());
     });
+    var links = []; //['static/pics/out01.png', 'static/pics/AT006EMFQJ85_1_v2.png', 'static/pics/OO001EWIWW29_1_v2.png'];
     $('#switcher').change(function () {
         console.log('selected ' + $("#switcher :selected").val());
-
-        render_template($("#switcher :selected").val(), links);
+        $('#canvas').empty();
+        loadTemplate($("#switcher :selected").val());
     });
     $('#slider-span').hide();
     $('#canvas').attr('disabled', 'disabled');
@@ -207,14 +207,12 @@
         tab = tab || 'tab-all';
         var requests = {
             'tab-all': "https%3A//api.mlab.com/api/1/databases/shopeiro/collections/tools%3Fl%3D12%26apiKey%3Dgyxt40ZuBvX0-Zs_ASfIphz87os52wgf",
-            'tab-dresses':
-"https%3A//api.mlab.com/api/1/databases/shopeiro/collections/tools%3Fl%3D12%26q%3D%7B%22typePrefix%22%3A%22%u041F%u043B%u0430%u0442%u044C%u0435%22%7D%26apiKey%3Dgyxt40ZuBvX0-Zs_ASfIphz87os52wgf",
+            'tab-dresses': "https%3A//api.mlab.com/api/1/databases/shopeiro/collections/tools%3Fl%3D12%26q%3D%7B%22typePrefix%22%3A%22%u041F%u043B%u0430%u0442%u044C%u0435%22%7D%26apiKey%3Dgyxt40ZuBvX0-Zs_ASfIphz87os52wgf",
             'tab-shoes': "https%3A//api.mlab.com/api/1/databases/shopeiro/collections/tools%3Fl%3D12%26q%3D%7B%22typePrefix%22%3A%22%u0422%u0443%u0444%u043B%u0438%22%7D%26apiKey%3Dgyxt40ZuBvX0-Zs_ASfIphz87os52wgf"
 //            ,
 //            'tab-blues': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Блуза"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
 //            'tab-skirts': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Юбка"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`,
 //            'tab-acc': `https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&q={"typePrefix":"Косметичка"}&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf`
-
         };
         $.ajax({
             url: unescape(requests[tab]),
@@ -235,8 +233,7 @@
     }
 
     getDataForTab('tab-dresses');
-    getDataForTab('tab-shoes');
-
+    //    getDataForTab('tab-shoes');
     //    getDataForTab('tab-blues');
     //    getDataForTab('tab-skirts');
     //    getDataForTab('tab-acc');
@@ -367,7 +364,11 @@
 <!--types:
 ['Мокасины', 'Слипоны', 'Кроссовки', 'Платье', 'Футболка', 'Ремень', 'Сапоги', 'Полусапоги', 'Шляпа', 'Босоножки', 'Туника пляжная', 'Сандалии', 'Блуза', 'Майка', 'Сумка', 'Кеды', 'Клатч', 'Пуловер', 'Джинсы', 'Костюм', 'Трусы', 'Юбка', 'Ботинки', 'Шорты джинсовые', 'Шапка', 'Рюкзак', 'Гетры', 'Кардиган', 'Лоферы', 'Джемпер', 'Куртка утепленная', 'Сабо', 'Очки солнцезащитные', 'Чехол для iPhone', 'Угги', 'Туника', 'Палантин', 'Комбинезон', 'Эспадрильи', 'Балетки', 'Ключница', 'Платок', 'Шлепанцы', 'Сумка спортивная', 'Свитшот', 'Топ', 'Бутсы зальные', 'Бейсболка', 'Резиновые сапоги', 'Рубашка', 'Визитница', 'Лонгслив', 'Свитер', 'Боди', 'Туфли', 'Кеды на танкетке', 'Ботильоны', 'Галстук', 'Сорочка ночная', 'Бюстгальтер', 'Брюки', 'Портмоне', 'Кошелек', 'Плащ', 'Часы', 'Поло', 'Купальник', 'Тапочки', 'Манишка', 'Жакет', 'Сланцы', 'Парка', 'Шарф', 'Лиф', 'Дубленка', 'Дутики', 'Шорты', 'Водолазка', 'Куртка', 'Комплект 6 шт.', 'Худи', 'Костюм спортивный', 'Куртка кожаная', 'Шорты для плавания', 'Шуба', 'Накидка', 'Пальто', 'Джеггинсы',  'Капри', 'Плавки', 'Брюки спортивные', 'Косметичка', 'Кепка', 'Юбка джинсовая', 'Зонт-трость', 'Портупея', 'Пиджак', 'Платье джинсовое', 'Сарафан', 'Панама', 'Леггинсы', 'Чехол для IPhone', 'Cлипоны', 'Термобелье', 'Болеро', 'Толстовка', 'Валенки', 'Шорты спортивные', 'Кредитница', 'Ветровка', 'Шиповки', 'Жилет', 'Футболка спортивная', 'Чиносы', 'Куртка джинсовая', 'Чехол для iPhone 5/5s', 'Майка домашняя', 'Пуховик', 'Сумка дорожная', 'Мешок', 'Жилет утепленный', 'Зонт складной', 'Топсайдеры', 'Бутсы', 'Майка спортивная', 'Чехол для планшета', 'Пояс', 'Топ спортивный', 'Рубашка джинсовая', 'Акваобувь', 'Наушники', 'Перчатки', 'Пижама', 'Топ бельевой', 'Ботфорты', 'Носки', 'Лонгслив спортивный', 'Комбинезон джинсовый', 'Пояс для чулок', 'Обложка для документов', 'Комплект 2 шт.', 'Жилет джинсовый', 'Брюки домашние', 'Колготки', 'Оправа', 'Пенал', 'Олимпийка',  'Бабочка', 'Белье корректирующее', 'Гольфы', 'Подтяжки', 'Луноходы', 'Платье пляжное', 'Воротник', 'Бриджи', 'Комплект термобелья', 'Сумка поясная', 'Полотенце', 'Сорочка','Халат домашний', 'Спортивный костюм', 'Подследники', 'Футболка домашняя', 'Юбка-шорты', 'Платок носовой', 'Портфель', 'Топ домашний', 'Полупальто', 'Ботинки трекинговые', 'Чехол для iPhone 6/6s', 'Унты', 'Комбинация', 'Резиновые полусапоги', 'Жилет кожаный', 'Угги на танкетке', 'Жилет меховой', 'Повязка', 'Спортивная сумка ', 'Комплект ремней', 'Берет', 'Чехол для телефона', 'Чемодан', 'Зажим для купюр', 'Пончо', 'Платье домашнее','Козырек', 'Шорты домашние', 'Лонгслив домашний', 'Парео', 'Сарафан джинсовый', 'Комплект пляжный', 'Несессер'
 -->
-
+<!--//    $.get("/templates", function (data) {-->
+<!--//        console.log(data);-->
+<!--//        templates = data;-->
+<!--//        render_template($("#switcher :selected").val(), links);-->
+<!--//    });-->
 <!--//    $.ajax({-->
 <!--//        url: 'https://api.mlab.com/api/1/databases/shopeiro/collections/tools?l=12&apiKey=gyxt40ZuBvX0-Zs_ASfIphz87os52wgf',-->
 <!--//        success: function (data) {-->
