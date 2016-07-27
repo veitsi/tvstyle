@@ -106,8 +106,8 @@
                 </select>
             </div>
             <span id="slider-span">
-                choose scale:<div id="slider" style="width: 300px; display: inline-block"></div>
-                <!--<button onclick="stopSlider()">finish scaling</button>-->
+                scale:<div id="slider-scale" style="width: 140px; display: inline-block"></div>
+                rotation: <div id="slider-rotate" style="width: 140px; display: inline-block"></div>
             </span>
             <div id="canvas" style="position: relative">
             </div>
@@ -250,16 +250,28 @@
         $('#slider-span').hide();
     }
 
+    jQuery.fn.rotate = function(degrees) {
+    $(this).css({'transform' : 'rotate('+ degrees +'deg)'});
+    };
     function scaleCellContent() {
         console.log('' + this + ' clicked');
         $('#slider-span').show();
         var img = this;
-        $('#slider').slider({
+        $('#slider-scale').slider({
             slide: function (event, ui) {
-                console.log('you changed slider to ' + ui.value);
+                console.log('you changed scale slider to ' + ui.value);
                 var currentScale = 100 + 2 * ui.value;
                 $(img).attr('style', 'max-height: ' + currentScale + "%;" + 'max-width: ' + currentScale + "%;");
 
+            },
+            change: stopSlider
+        });
+        $('#slider-rotate').slider({
+            slide: function (event, ui) {
+                console.log('you changed rotate slider to ' + parseInt(ui.value));
+                var currentRotate = (0+ ui.value)*3.8;
+                //$(img).attr('style', 'max-height: ' + currentScale + "%;" + 'max-width: ' + currentScale + "%;");
+                $(img).rotate(currentRotate);
             },
             change: stopSlider
         });
