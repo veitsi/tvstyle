@@ -11,6 +11,9 @@ var templates = {
     'styled': {
         items: 7
     },
+    'bookmarks': {
+        items: 4
+    },
     'ink': {
         items: 5
     }

@@ -437,6 +437,12 @@
 .template-elegant .item-6:hover {
   background-color: #ab4444;
 }
+
+/*
+**************Styled**************
+*/
+
+
 .template-styled {
   position: absolute;
   width: 550px;
@@ -593,5 +599,120 @@
   opacity: .5;
 }
 .template-styled .item-7:hover {
+  background-color: #ab4444;
+}
+
+/*
+**************Bookmarks**************
+*/
+
+.template-bookmarks {
+  position: absolute;
+  width: 640px;
+  height: 550px;
+  margin: auto;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.template-bookmarks .item-img__bookmarks-1 {
+  left: 0;
+  top: 10px;
+  position: absolute;
+  z-index: 2;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-bookmarks .item-img__bookmarks-2 {
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 9;
+  transform: matrix(-1.00006, 3e-05, -3e-05, -1.00006, 0, 0);
+  pointer-events: none;
+}
+.template-bookmarks .item-img__bookmarks-3 {
+  left: 214px;
+  top: 181px;
+  position: absolute;
+  z-index: 5;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-bookmarks .item-img__bookmarks-4 {
+  left: 373px;
+  top: 378px;
+  position: absolute;
+  z-index: 6;
+  transform: matrix(1.00006, -8e, -2e, 1.00006, 0, 0);
+  pointer-events: none;
+}
+.template-bookmarks .item-img__bookmarks-5 {
+  left: 494px;
+  top: 11px;
+  position: absolute;
+  z-index: 3;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-bookmarks .item-1 {
+  width: 300px;
+  height: 300px;
+  left: 4px;
+  top: 15px;
+  position: absolute;
+  z-index: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-bookmarks .item-1:hover {
+  background-color: #ab4444;
+}
+.template-bookmarks .item-2 {
+  width: 183px;
+  height: 168px;
+  left: 317px;
+  top: 16px;
+  position: absolute;
+  z-index: 8;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-bookmarks .item-2:hover {
+  background-color: #ab4444;
+}
+.template-bookmarks .item-3 {
+  width: 211px;
+  height: 141px;
+  left: 4px;
+  top: 322px;
+  position: absolute;
+  z-index: 7;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-bookmarks .item-3:hover {
+  background-color: #ab4444;
+}
+.template-bookmarks .item-4 {
+  width: 262px;
+  height: 250px;
+  left: 227px;
+  top: 204px;
+  position: absolute;
+  z-index: 4;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-bookmarks .item-4:hover {
   background-color: #ab4444;
 }
