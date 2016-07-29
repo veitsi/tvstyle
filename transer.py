@@ -2,7 +2,7 @@ from PIL import Image
 import os
 from urllib.request import urlopen
 
-max_color = 244
+max_color = 250
 
 
 def save_transp(jpgfile, pngfile):
