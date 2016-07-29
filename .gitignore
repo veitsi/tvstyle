@@ -1,5 +1,6 @@
 .idea/
 __pycache__
 log.txt
-
+tmp.jpg
+static/pics/
 

@@ -2,7 +2,7 @@ from PIL import Image
 import os
 from urllib.request import urlopen
 
-max_color = 253
+max_color = 244
 
 
 def save_transp(jpgfile, pngfile):
@@ -30,6 +30,7 @@ def save_transp(jpgfile, pngfile):
             # print (y,x, pixdata[x, y][0], pixdata[x, y][1], pixdata[x, y][2]   )
             if is_white():
                 pixdata[x, y] = (0, 0, 0, 0)
+
 
     x1 = 0
     x2 = img.size[0]

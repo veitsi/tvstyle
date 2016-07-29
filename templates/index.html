@@ -278,12 +278,13 @@
     }
 
     function droppedIn(event, ui) {
-        if (!$(this).is(":hover")){return}
-//        console.log('in droppedIn ' + ui.draggable.attr('id'));
+        console.log('in droppedIn ' + ui.draggable.attr('id'));
+        console.log('in droppedIn '+$(this).attr('class'));
         console.log('in droppedIn ' + $(this).is(":hover"));
+        if (!$(this).is(":hover")){return}
 
         $(this).empty();
-        //$(this).addClass('opacity');
+        $(this).addClass('opacity');
         $('<img src=' + ui.draggable.attr('src') + '>').click(scaleCellContent).appendTo(this);
         console.log('dropping over');
 

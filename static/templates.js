@@ -1,6 +1,6 @@
 var templates = {
     'c11': {
-        items: 1
+        items: 2
     },
     'hearts': {
         items: 5
