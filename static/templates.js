@@ -14,6 +14,9 @@ var templates = {
     'bookmarks': {
         items: 4
     },
+    'friday': {
+        items: 8
+    },
     'ink': {
         items: 5
     }
