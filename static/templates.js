@@ -8,6 +8,9 @@ var templates = {
     'elegant': {
         items: 6
     },
+    'styled': {
+        items: 7
+    },
     'ink': {
         items: 5
     }
