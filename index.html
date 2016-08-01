@@ -279,8 +279,7 @@
         console.log('in droppedIn ' + ui.draggable.attr('id'));
         console.log('in droppedIn ' + $(this).attr('class'));
         console.log('in droppedIn ' + $(this).is(":hover"));
-        console.log('in droppedIn ' + $(this).is(":focus"));
-        console.log('in droppedIn ' + $(this).is(":active"));
+        console.log(!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/));
         if (!$(this).is(":hover")) {
             return
         }
