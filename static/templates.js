@@ -35,6 +35,8 @@ function loadTemplate(id) {
             tolerance: 'pointer'
         });
 
+        $('.item-' + i).bind('mouseenter', getEventTarget); //Добавляем обработчик событий
+
         //$("#" + i).attr('src', links[i]);
         //$("#" + i).droppable({drop: droppedIn});
     }
