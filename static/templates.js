@@ -19,6 +19,9 @@ var templates = {
     },
     'ink': {
         items: 5
+    },
+    'pattern': {
+        items: 6
     }
 
 };
