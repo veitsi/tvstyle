@@ -8,6 +8,15 @@ var templates = {
     'elegant': {
         items: 6
     },
+    'styled': {
+        items: 7
+    },
+    'bookmarks': {
+        items: 4
+    },
+    'friday': {
+        items: 8
+    },
     'ink': {
         items: 5
     }
@@ -17,10 +26,14 @@ function loadTemplate(id) {
     document.querySelector('#canvas')
         .appendChild(document.importNode(
             document.querySelector('link[rel="import"]').import.querySelector('#' + id).content, true));
-    var i = 1;
-    for (i; i <= templates[id].items; i++) {
+    // var i = 1;
+    for (var i = 1; i <= templates[id].items; i++) {
         console.log("#" + i);
-        $(".item-"+i).droppable({drop: droppedIn});
+        $(".item-"+i).droppable({
+            drop: droppedIn,
+            hoverClass: 'dropHover',
+            tolerance: 'pointer'
+        });
 
         //$("#" + i).attr('src', links[i]);
         //$("#" + i).droppable({drop: droppedIn});

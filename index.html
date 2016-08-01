@@ -68,7 +68,7 @@
     #canvas .opacity {
         opacity: 1;
         background-color: transparent;
-
+        border: none;
     }
 
     #canvas img {
@@ -77,6 +77,10 @@
         max-height: 100%;
         margin: auto
     }
+
+    /*#canvas .dropHover {*/
+        /*background-color: #0a001f;*/
+    /*}*/
 
     .cell {
         position: absolute;
@@ -101,6 +105,9 @@
                     <option selected value="elegant">elegant</option>
                     <option value="ink">ink</option>
                     <option value="hearts">hearts</option>
+                    <option value="styled">styled</option>
+                    <option value="bookmarks">bookmarks</option>
+                    <option value="friday">friday</option>
                     <option value="c11">c11</option>
                 </select>
             </div>
@@ -275,19 +282,31 @@
         });
     }
 
+    var eventTarget;
+    function getEventTarget(event) {
+        eventTarget = event.target;
+//        console.log(eventTarget);
+    }
+
     function droppedIn(event, ui) {
         console.log('in droppedIn ' + ui.draggable.attr('id'));
         console.log('in droppedIn ' + $(this).attr('class'));
         console.log('in droppedIn ' + $(this).is(":hover"));
-        console.log(!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/));
-        if (!$(this).is(":hover")) {
-            return
-        }
+        console.log('in droppedIn ' + $(this).is(":focus"));
+        console.log('in droppedIn ' + $(this).is(":active"));
+//        if (!$(this).is(":hover")) {
+//            return
+//        }
+        if (this !== eventTarget) {return}
+//        var zIndex = $(this).css('z-index');
+//        console.log(zIndex);
 
-        $(this).empty();
-        $(this).addClass('opacity');
+//        $(this).empty();
+//        $(this).addClass('opacity');
+        $(this).empty().addClass('opacity');
         $('<img src=' + ui.draggable.attr('src') + '>').click(scaleCellContent).appendTo(this);
         console.log('dropping over');
+//        debugger;
 
 //        $(this).attr('src',ui.draggable.attr('src'));
         //$(this).append("<p>ppp<p>");
