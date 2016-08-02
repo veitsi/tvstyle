@@ -19,6 +19,9 @@ var templates = {
     },
     'ink': {
         items: 5
+    },
+    'pattern': {
+        items: 6
     }
 
 };
@@ -34,6 +37,8 @@ function loadTemplate(id) {
             hoverClass: 'dropHover',
             tolerance: 'pointer'
         });
+
+        $('.item-' + i).bind('mouseenter', getEventTarget); //Добавляем обработчик событий
 
         //$("#" + i).attr('src', links[i]);
         //$("#" + i).droppable({drop: droppedIn});

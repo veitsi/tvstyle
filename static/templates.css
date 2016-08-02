@@ -878,3 +878,188 @@
 .template-friday .item-8:hover {
   background-color: #ab4444;
 }
+
+/*
+**************Pattern**************
+*/
+
+.template-pattern {
+  position: absolute;
+  width: 640px;
+  height: 550px;
+  margin: auto;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.template-pattern .item-img__pattern-1 {
+  left: 357.875px;
+  top: 32.91px;
+  position: absolute;
+  z-index: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-2 {
+  left: 388.37px;
+  top: 114.818px;
+  position: absolute;
+  z-index: 2;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-3 {
+  left: 265.491px;
+  top: 212.772px;
+  position: absolute;
+  z-index: 3;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-4 {
+  left: 519.35px;
+  top: 76.892px;
+  position: absolute;
+  z-index: 5;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-5 {
+  left: 220.645px;
+  top: 119.965px;
+  position: absolute;
+  z-index: 8;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-6 {
+  left: 432.32px;
+  top: 220.597px;
+  position: absolute;
+  z-index: 9;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-7 {
+  left: 182.072px;
+  top: 1.404px;
+  position: absolute;
+  z-index: 10;
+  transform: matrix(0.97232, 0.23368, -0.23368, 0.97232, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-8 {
+  left: 112.112px;
+  top: 148.25px;
+  position: absolute;
+  z-index: 11;
+  transform: matrix(0.86945, -0.49401, 0.49401, 0.86945, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-9 {
+  left: 0px;
+  top: 290.142px;
+  position: absolute;
+  z-index: 12;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-img__pattern-10 {
+  left: 316.346px;
+  top: 350.909px;
+  position: absolute;
+  z-index: 16;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  pointer-events: none;
+}
+.template-pattern .item-1 {
+  width: 179px;
+  height: 179px;
+  left: 39.465px;
+  top: 0px;
+  position: absolute;
+  z-index: 13;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-pattern .item-1:hover {
+  background-color: #ab4444;
+}
+.template-pattern .item-2 {
+  width: 111px;
+  height: 95px;
+  left: 435.908px;
+  top: 51.336px;
+  position: absolute;
+  z-index: 7;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-pattern .item-2:hover {
+  background-color: #ab4444;
+}
+.template-pattern .item-3 {
+  width: 111px;
+  height: 95px;
+  left: 321.998px;
+  top: 149.102px;
+  position: absolute;
+  z-index: 6;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-pattern .item-3:hover {
+  background-color: #ab4444;
+}
+.template-pattern .item-4 {
+  width: 139px;
+  height: 117px;
+  left: 52.026px;
+  top: 209.886px;
+  position: absolute;
+  z-index: 15;
+  transform: matrix(0.85591, 0.51711, -0.51711, 0.85591, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-pattern .item-4:hover {
+  background-color: #ab4444;
+}
+.template-pattern .item-5 {
+  width: 110px;
+  height: 182px;
+  left: 208.785px;
+  top: 238.583px;
+  position: absolute;
+  z-index: 14;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-pattern .item-5:hover {
+  background-color: #ab4444;
+}
+.template-pattern .item-6 {
+  width: 111px;
+  height: 95px;
+  left: 434.114px;
+  top: 243.279px;
+  position: absolute;
+  z-index: 4;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  opacity: .5;
+}
+.template-pattern .item-6:hover {
+  background-color: #ab4444;
+}
